@@ -1,10 +1,8 @@
 package org.example.repository.impl;
 
 import org.example.DbConnection;
-import org.example.QueryGenerator;
-import org.example.QueryPredicateExecutor;
+import org.example.QuerySQL.QueryGenerator;
 import org.example.repository.CrudRepository;
-import org.example.repository.Repository;
 
 import java.lang.reflect.Field;
 import java.sql.DriverManager;
@@ -88,7 +86,8 @@ public class CrudRepositoryImpl<T,ID> implements CrudRepository<T, ID> {
     }
 
     @Override
-    public long count(Predicate<T> predicate) {
-        return 0;
+    public long count(Predicate<T> predicate) throws Exception {
+        var list = getResultSet(DbConnection.getStatement(), QueryGenerator.selectAllQuery(entityClass));
+        return list.stream().filter(predicate).count();
     }
 }

@@ -1,12 +1,11 @@
 package org.example.repository;
-import org.example.Article;
-import org.example.QueryPredicateExecutor;
+import org.example.model.Article;
 
 import java.util.List;
 import java.util.function.Predicate;
 
 public class ArticleRepository implements CrudRepository<Article, String> {
-    private CrudRepository<Article, String> repository;
+    private final CrudRepository<Article, String> repository;
     public ArticleRepository(CrudRepository _repository) {
         repository = _repository;
     }
@@ -37,7 +36,7 @@ public class ArticleRepository implements CrudRepository<Article, String> {
     }
 
     @Override
-    public Iterable<Article> find(Predicate<Article> predicate) throws Exception {
+    public List<Article> find(Predicate<Article> predicate) throws Exception {
         return repository.find(predicate);
     }
 

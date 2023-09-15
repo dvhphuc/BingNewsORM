@@ -1,7 +1,7 @@
 package org.example.repository;
 
 
-import org.example.Article;
+import org.example.model.Article;
 import org.example.DbConnection;
 import org.example.repository.impl.CrudRepositoryImpl;
 import org.junit.jupiter.api.Test;

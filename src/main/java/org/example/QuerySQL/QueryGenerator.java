@@ -1,4 +1,4 @@
-package org.example;
+package org.example.QuerySQL;
 
 import org.example.annotation.Entity;
 import org.example.annotation.Primary;
@@ -107,29 +107,6 @@ public class QueryGenerator {
         sb.append("SELECT * FROM ");
         sb.append(entity.name());
         sb.append(";");
-        return sb.toString();
-    }
-
-    static public String selectQuery(Object object) {
-        StringBuilder sb = new StringBuilder();
-        sb.append("SELECT * FROM ");
-        sb.append(object.getClass().getSimpleName());
-        sb.append(" WHERE ");
-        for (Field field : object.getClass().getDeclaredFields()) {
-            field.setAccessible(true);
-            try {
-                if (field.isAnnotationPresent(Primary.class)) {
-                    sb.append(field.getName());
-                    sb.append("=");
-                    sb.append("'");
-                    sb.append(field.get(object));
-                    sb.append("'");
-                    sb.append(";");
-                }
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            }
-        }
         return sb.toString();
     }
 
