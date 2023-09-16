@@ -1,15 +1,9 @@
-package org.example.QuerySQL;
+package org.example.query;
 
 import org.example.annotation.Entity;
 import org.example.annotation.Primary;
 
-import javax.persistence.EntityManager;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
 import java.lang.reflect.Field;
-import java.util.List;
-import java.util.function.Predicate;
 
 public class QueryGenerator {
     static public String insertQuery(Object object) {
@@ -133,4 +127,8 @@ public class QueryGenerator {
         return sb.toString();
     }
 
+
+    public static <T, ID> String deleteQuery(Class<T> entityClass, ID id) {
+
+    }
 }

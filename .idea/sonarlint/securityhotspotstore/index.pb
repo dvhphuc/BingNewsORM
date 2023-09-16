@@ -9,14 +9,10 @@ S
 0src/main/java/org/example/annotation/Column.java,5\0\50303103c07f38ca3e1874af01e66a78177e5dfc
 \
 ,src/main/java/org/example/model/Article.java,8\7\876062924def66be273ef4ebd5efd77e4692654d
-j
-:src/main/java/org/example/repository/EntityRepository.java,4\f\4fa3d79832f4795154eb3a8a2e8349dbef5c1974
 d
 4src/main/java/org/example/repository/Repository.java,3\8\383d21dc53e58a073250f0d50e2f5f8b0566b328
 e
 5src/main/java/org/example/QueryPredicateExecutor.java,b\6\b6c1256546d1339d0558fc4e3535d03c89eebedc
-]
--src/main/java/org/example/QueryGenerator.java,3\a\3ae1b2ebe58feae52a266da95eb050030da0563c
 h
 8src/main/java/org/example/repository/CrudRepository.java,2\e\2eb1ddbf1fe52d4b136ace041bdb825481578daf
 q
@@ -29,3 +25,9 @@ k
 ;src/main/java/org/example/repository/ArticleRepository.java,1\0\10d8d301b04924cfe675a55efe2182bdcd959fc2
 n
 >src/test/java/org/example/repository/EntityRepositoryTest.java,f\f\ffc3077e52aa9e1a7cb8b0ecd1af651ba99f319a
+f
+6src/main/java/org/example/QuerySQL/QueryGenerator.java,d\e\de95eb030de40fac9b61da34751611f65d34a9b9
+\
+,src/main/java/org/example/model/AdTopic.java,9\4\94c7a4eef724dc7a11bd72a10e253ae350661c1c
+k
+;src/main/java/org/example/repository/AdTopicRepository.java,9\b\9b5c46a34b3858f39356fb4a837854a268e48c3b

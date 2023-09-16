@@ -1,7 +1,7 @@
 package org.example.repository.impl;
 
 import org.example.DbConnection;
-import org.example.QuerySQL.QueryGenerator;
+import org.example.query.QueryGenerator;
 import org.example.repository.CrudRepository;
 
 import java.lang.reflect.Field;
@@ -29,10 +29,26 @@ public class CrudRepositoryImpl<T,ID> implements CrudRepository<T, ID> {
 
     @Override
     public void update(T entity) {
+        String updateQuery = QueryGenerator.updateQuery(entity);
+        try {
+            var dbConnection = DriverManager.getConnection(DbConnection.getConnectionUrl());
+            var statement = dbConnection.createStatement();
+            statement.execute(updateQuery);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 
     @Override
     public void delete(ID id) {
+        String deleteQuery = QueryGenerator.deleteQuery(entityClass, id);
+        try {
+            var dbConnection = DriverManager.getConnection(DbConnection.getConnectionUrl());
+            var statement = dbConnection.createStatement();
+            statement.execute(deleteQuery);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 
     @Override

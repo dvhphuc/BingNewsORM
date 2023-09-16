@@ -1,27 +1,15 @@
 
-m	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ò°¼ 8¹¦¿¾©1
-e
-java:S2095"HUse try-with-resources or close this "Connection" in a "finally" clause.(û”ÜÙ8‚§¿¾©1
-i
-java:S2095"GUse try-with-resources or close this "Statement" in a "finally" clause.(Áù§²ùÿÿÿÿ8‚§¿¾©1
-i
-java:S20952"GUse try-with-resources or close this "Statement" in a "finally" clause.(Áù§²ùÿÿÿÿ8‚§¿¾©1
-e
-java:S20951"HUse try-with-resources or close this "Connection" in a "finally" clause.(û”ÜÙ8‚§¿¾©1
+m	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ò°¼ 8Ýˆ³À©1
 ž
-java:S1186!"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ÚŒÁÂ8ƒ§¿¾©1
+java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ÚŒÁÂ8éˆ³À©1
 £
-java:S1186%"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¢áÁ’ùÿÿÿÿ8ƒ§¿¾©1
-e	java:S119"IRename this generic name to match the regular expression '^[A-Z][0-9]?$'.(€¶€8…§¿¾©1
+java:S1186#"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¢áÁ’ùÿÿÿÿ8êˆ³À©1
+e	java:S119"IRename this generic name to match the regular expression '^[A-Z][0-9]?$'.(€¶€8ëˆ³À©1
 Y
-java:S18544"=Remove this useless assignment to local variable "resultSet".(¯ã×8ÚÅÜ¾©1
+java:S18542"=Remove this useless assignment to local variable "resultSet".(¯ã×8íˆ³À©1
 J
-java:S14814".Remove this unused "resultSet" local variable.(¯ã×8ÚÅÜ¾©1
+java:S14812".Remove this unused "resultSet" local variable.(¯ã×8îˆ³À©1
 I
-java:S3011K",This accessibility update should be removed.(˜ÂÓ˜8°àÂ¾©1
+java:S3011I",This accessibility update should be removed.(˜ÂÓ˜8ðˆ³À©1
 I
-java:S3011S",This accessibility bypass should be removed.(óƒ¤È8ø í¾©1
-a
-java:S1128"?Remove this unused import 'org.example.QueryPredicateExecutor'.(¬½Êúþÿÿÿÿ8’èæ¾©1
-`
-java:S1128">Remove this unused import 'org.example.repository.Repository'.(×ª«Éÿÿÿÿÿ8’èæ¾©1
+java:S3011Q",This accessibility bypass should be removed.(óƒ¤È8ðˆ³À©1
