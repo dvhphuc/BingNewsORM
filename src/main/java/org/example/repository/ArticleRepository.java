@@ -37,4 +37,8 @@ public class ArticleRepository {
     public long count(Predicate<Article> predicate) {
         return 0;
     }
+
+    public List<Article> find(int page, int size) throws Exception {
+        return repository.find(page, size);
+    }
 }

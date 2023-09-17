@@ -126,9 +126,4 @@ public class QueryGenerator {
         sb.append(";");
         return sb.toString();
     }
-
-
-    public static <T, ID> String deleteQuery(Class<T> entityClass, ID id) {
-
-    }
 }

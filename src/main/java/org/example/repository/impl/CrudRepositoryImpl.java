@@ -1,6 +1,7 @@
 package org.example.repository.impl;
 
 import org.example.DbConnection;
+import org.example.Pagination;
 import org.example.query.QueryGenerator;
 import org.example.repository.CrudRepository;
 
@@ -13,7 +14,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
 
-public class CrudRepositoryImpl<T,ID> implements CrudRepository<T, ID> {
+public class CrudRepositoryImpl<T,ID> implements CrudRepository<T, ID>, Pagination<T> {
     private Class<T> entityClass;
     public CrudRepositoryImpl(Class<T> _entityClass) {
         entityClass = _entityClass;
@@ -41,7 +42,7 @@ public class CrudRepositoryImpl<T,ID> implements CrudRepository<T, ID> {
 
     @Override
     public void delete(ID id) {
-        String deleteQuery = QueryGenerator.deleteQuery(entityClass, id);
+        String deleteQuery = QueryGenerator.deleteQuery(id);
         try {
             var dbConnection = DriverManager.getConnection(DbConnection.getConnectionUrl());
             var statement = dbConnection.createStatement();
@@ -106,4 +107,17 @@ public class CrudRepositoryImpl<T,ID> implements CrudRepository<T, ID> {
         var list = getResultSet(DbConnection.getStatement(), QueryGenerator.selectAllQuery(entityClass));
         return list.stream().filter(predicate).count();
     }
+
+    @Override
+    public List<T> find(int page, int size) throws Exception {
+        var statement = DbConnection.getConnection().createStatement();
+        var selectAllQuery = QueryGenerator.selectAllQuery(entityClass);
+        List<T> list = getResultSet(statement, selectAllQuery);
+        List<T> filteredList = new ArrayList<>();
+        for(int i = (page - 1) * size; i < page * size; i++) {
+            filteredList.add(list.get(i));
+        }
+        return filteredList;
+    }
+
 }

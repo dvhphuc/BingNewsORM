@@ -1,5 +1,5 @@
 
-
-java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Á¾Ó¿8‹§¾©1
 b
-java:S1124"EReorder the modifiers to comply with the Java Language Specification.(Á¾Ó¿8Œ‚Ö»©1
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(Á¾Ó¿8ôĞáª1
+K
+java:S1481".Remove this unused "pathParts" local variable.(¿ …«8ıĞáª1

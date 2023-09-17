@@ -27,7 +27,13 @@ n
 >src/test/java/org/example/repository/EntityRepositoryTest.java,f\f\ffc3077e52aa9e1a7cb8b0ecd1af651ba99f319a
 \
 ,src/main/java/org/example/model/AdTopic.java,9\4\94c7a4eef724dc7a11bd72a10e253ae350661c1c
-f
-6src/main/java/org/example/QuerySQL/QueryGenerator.java,d\e\de95eb030de40fac9b61da34751611f65d34a9b9
 k
 ;src/main/java/org/example/repository/AdTopicRepository.java,9\b\9b5c46a34b3858f39356fb4a837854a268e48c3b
+c
+3src/main/java/org/example/query/QueryGenerator.java,3\d\3d3baf5f380bfaf6814145ab62c7e5e85f3bb1e2
+V
+&src/main/java/org/example/API/API.java,f\2\f2664925affc4f14260c2b6a6ece0bf47a4ca272
+d
+4src/main/java/org/example/annotation/GetMapping.java,b\7\b7d04c032b18fd0fa47ff96b9f88bbaff0b4c3bf
+Y
+)src/main/java/org/example/Pagination.java,0\2\020a4c30f81b03670c09d3ec52e1779deaf35d63
