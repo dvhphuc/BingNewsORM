@@ -12,13 +12,18 @@ public class Main {
         String connectionString = "jdbc:sqlserver://localhost;database=BingNews;integratedSecurity=true;trustServerCertificate=true;";
         DbConnection.connectionUrl = connectionString;
 
-        int PORT = 80;
+        int PORT = 8080;
 
         HttpServer server = HttpServer.create(new InetSocketAddress(PORT), 0);
 
         var webService = new WebService(server);
+
         webService.addController(ArticleController.class);
 
+        webService.createServerContext();
+
         webService.start();
+
+
     }
 }

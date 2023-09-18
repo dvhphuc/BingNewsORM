@@ -1,8 +1,0 @@
-
-E
-java:S1604"(Make this anonymous inner class a lambda(Š“›8Í²ñª1
-{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ø¦€×şÿÿÿÿ8Èãğª1
-o
-java:S2109"M"@GetMapping" is not available at runtime and cannot be seen with reflection.(‡ çúÿÿÿÿ8„í®Ÿª1
-P
-java:S1874"3Remove this use of "newInstance"; it is deprecated.(µè„ê8Îñª1

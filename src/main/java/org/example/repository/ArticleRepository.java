@@ -39,6 +39,6 @@ public class ArticleRepository {
     }
 
     public List<Article> getInPage(int page, int size) throws Exception {
-        return repository.find(page, size);
+        return repository.getInPage(page, size);
     }
 }

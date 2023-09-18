@@ -11,18 +11,28 @@ import org.json.JSONObject;
 
 import javax.servlet.http.HttpServletRequest;
 
-@Controller
+@Controller("Article")
 public class ArticleController {
     ArticleRepository articleRepository;
     public ArticleController() throws Exception {
         articleRepository = new ArticleRepository(new CrudRepositoryImpl<Article,String>(Article.class));
     }
 
-    @GetMapping("/articles")
+    @GetMapping("articles")
     public String getArticles() throws Exception {
         var articles = articleRepository.findAll();
         return new JSONArray(articles).toString();
     }
+
+//    @GetMapping("/articles/{id}")
+//    public String getArticle(HttpServletRequest request) throws Exception {
+//        var guid = request.getParameter("guid");
+//        var article = articleRepository.findById(guid);
+//        if (article == null) {
+//            return "Article not found";
+//        }
+//        return new JSONObject(article).toString();
+//    }
 
     @PostMapping("/articles")
     public String postArticles(HttpServletRequest request) throws Exception {
@@ -43,7 +53,7 @@ public class ArticleController {
         return new JSONObject(article).toString();
     }
 
-    @DeleteMapping("/articles/{guid}")
+    @DeleteMapping("/articles/{id}")
     public String deleteArticle(HttpServletRequest request) throws Exception {
         var guid = request.getParameter("guid");
         var article = articleRepository.findById(guid);

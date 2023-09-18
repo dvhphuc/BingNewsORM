@@ -1,94 +1,69 @@
 package org.example.API;
 
 import com.sun.net.httpserver.HttpExchange;
+import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
-import org.example.annotation.Controller;
 import org.example.annotation.GetMapping;
-import org.example.annotation.PostMapping;
 
-import java.lang.annotation.Annotation;
-import java.lang.reflect.InvocationTargetException;
+import java.io.IOException;
 import java.lang.reflect.Method;
-import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 public class WebService {
     HttpServer server;
+    List<Class> controllerClasses = new ArrayList<>();
+
     public WebService(HttpServer server) {
         this.server = server;
     }
 
-    public void addServerContext(Class<?> controller, Annotation annotation, Method method) throws Exception {
-        if (annotation.annotationType().equals(GetMapping.class)) {
-            String path = ((GetMapping) annotation).value();
-            server.createContext(path, (HttpExchange exchange) -> {
-                Object response = null;
-                try {
-                    response = method.invoke(controller.getDeclaredConstructor().newInstance());
-                } catch (IllegalAccessException | InvocationTargetException | InstantiationException |
-                         NoSuchMethodException e) {
-                    e.printStackTrace();
-                }
-                String responseText = response.toString();
-                exchange.getResponseHeaders().set("Content-Type", "application/json; charset=" + StandardCharsets.UTF_8);
-                exchange.sendResponseHeaders(200, responseText.getBytes(StandardCharsets.UTF_8).length);
-                var os = exchange.getResponseBody();
-                os.write(responseText.getBytes(StandardCharsets.UTF_8));
-                os.close();
-            });
-        }
-
-        if (annotation.annotationType().equals(PostMapping.class)) {
-            String path = ((PostMapping) annotation).value();
-            server.createContext(path, (HttpExchange exchange) -> {
-                Object response = null;
-                try {
-                    response = method.invoke(controller.getDeclaredConstructor().newInstance(), exchange.getRequestURI().getQuery());
-                } catch (IllegalAccessException | InvocationTargetException | InstantiationException |
-                         NoSuchMethodException e) {
-                    e.printStackTrace();
-                }
-                String responseText = response.toString();
-                exchange.getResponseHeaders().set("Content-Type", "application/json; charset=" + StandardCharsets.UTF_8);
-                exchange.sendResponseHeaders(200, responseText.getBytes(StandardCharsets.UTF_8).length);
-                var os = exchange.getResponseBody();
-                os.write(responseText.getBytes(StandardCharsets.UTF_8));
-                os.close();
-            });
-        }
+    public void addController(Class<?> controllerClass) {
+        controllerClasses.add(controllerClass);
     }
 
+    public void createServerContext() throws Exception {
+        server.createContext("/", new HttpHandler() {
+            @Override
+            public void handle(HttpExchange exchange) throws IOException {
+                String requestURI = exchange.getRequestURI().toString();
+                String getMappingValue = requestURI.split("/")[2];
+                try {
+                    Class<?> controllerClass = getControllerClass(requestURI);
+                    for (Method method : controllerClass.getMethods()) {
+                        if (!method.isAnnotationPresent(GetMapping.class)) {
+                            continue;
+                        }
+                        GetMapping getMapping = method.getAnnotation(GetMapping.class);
+                        if (!getMapping.value().equals(getMappingValue)) {
+                            continue;
+                        }
+                        Object controllerInstance = controllerClass.getConstructor().newInstance();
+                        Object response = method.invoke(controllerInstance);
+                        String responseString = response.toString();
+                        //UTF-8 response
+                        exchange.getResponseHeaders().set("Content-Type", "text/html; charset=UTF-8");
+                        exchange.sendResponseHeaders(200, responseString.getBytes().length);
+                        exchange.getResponseBody().write(responseString.getBytes());
+                        exchange.close();
+                    }
 
-    public void addController(Class<?> controller) throws Exception {
-        if (!controller.isAnnotationPresent(Controller.class))
-            return;
-
-        Method[] methods = controller.getDeclaredMethods();
-        for (Method method : methods) {
-            var getMapping = method.getAnnotation(GetMapping.class);
-            addServerContext(controller, getMapping, method);
-        }
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
     }
 
     public void start() {
         server.start();
     }
 
-    public boolean isSame(String templateUri, String clientUri) {
-        String[] templateItems = templateUri.split("/");
-        String[] clientItems = clientUri.split("/");
-        if (templateItems.length != clientItems.length) {
-            return false;
-        }
-        for (int i = 0; i < templateItems.length; i++) {
-            if (templateItems[i].equals(clientItems[i])) {
-                continue;
-            }
-            if (templateItems[i].startsWith("{") && templateItems[i].endsWith("}")) {
-                continue;
-            }
-            return false;
-        }
-        return true;
+    public Class<?> getControllerClass(String requestURI) throws ClassNotFoundException {
+        String[] requestURISplit = requestURI.split("/");
+        String controllerName = requestURISplit[1];
+        String controllerClassName = "org.example.API.controller." + controllerName.substring(0, 1).toUpperCase(Locale.ROOT) + controllerName.substring(1) + "Controller";
+        return Class.forName(controllerClassName);
     }
-
 }

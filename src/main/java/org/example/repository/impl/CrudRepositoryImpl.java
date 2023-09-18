@@ -109,7 +109,7 @@ public class CrudRepositoryImpl<T,ID> implements CrudRepository<T, ID>, Paginati
     }
 
     @Override
-    public List<T> find(int page, int size) throws Exception {
+    public List<T> getInPage(int page, int size) throws Exception {
         var statement = DbConnection.getConnection().createStatement();
         var selectAllQuery = QueryGenerator.selectAllQuery(entityClass);
         List<T> list = getResultSet(statement, selectAllQuery);
