@@ -1,5 +1,21 @@
 
 m	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ò°¼ 8èÀ–Ÿª1
+e
+java:S2095/"HUse try-with-resources or close this "Connection" in a "finally" clause.(û”ÜÙ8åï®Ÿª1
+e
+java:S2095"HUse try-with-resources or close this "Connection" in a "finally" clause.(û”ÜÙ8åï®Ÿª1
+i
+java:S20950"GUse try-with-resources or close this "Statement" in a "finally" clause.(Áù§²ùÿÿÿÿ8æï®Ÿª1
+e
+java:S2095@"HUse try-with-resources or close this "Connection" in a "finally" clause.(û”ÜÙ8æï®Ÿª1
+i
+java:S2095"GUse try-with-resources or close this "Statement" in a "finally" clause.(Áù§²ùÿÿÿÿ8æï®Ÿª1
+e
+java:S2095#"HUse try-with-resources or close this "Connection" in a "finally" clause.(û”ÜÙ8æï®Ÿª1
+i
+java:S2095$"GUse try-with-resources or close this "Statement" in a "finally" clause.(Áù§²ùÿÿÿÿ8çï®Ÿª1
+i
+java:S2095A"GUse try-with-resources or close this "Statement" in a "finally" clause.(Áù§²ùÿÿÿÿ8ìï®Ÿª1
 d	java:S119"IRename this generic name to match the regular expression '^[A-Z][0-9]?$'.(´ÍÐB8øÀ–Ÿª1
 Y
 java:S1854C"=Remove this useless assignment to local variable "resultSet".(¯ã×8ˆÁ–Ÿª1

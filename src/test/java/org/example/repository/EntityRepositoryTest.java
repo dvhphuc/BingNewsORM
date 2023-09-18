@@ -38,16 +38,17 @@ class EntityRepositoryTest {
         var dbConnection = new DbConnection("jdbc:sqlserver://localhost;database=BingNews;integratedSecurity=true;trustServerCertificate=true;");
         var crudRepoImpl = new CrudRepositoryImpl<Article, String>(Article.class);
         var articleRepository = new ArticleRepository(crudRepoImpl);
-        var articles = articleRepository.find(article -> article.getTitle().equals("title"));
+        var articles = articleRepository.getInPage(article -> article.getTitle().equals("title"));
         articles.forEach(article -> System.out.println(article.getTitle()));
     }
 
     @Test
-    void testFindByPage() throws Exception {
+    void testPagination() throws Exception {
         var dbConnection = new DbConnection("jdbc:sqlserver://localhost;database=BingNews;integratedSecurity=true;trustServerCertificate=true;");
         var crudRepoImpl = new CrudRepositoryImpl<Article, String>(Article.class);
         var articleRepository = new ArticleRepository(crudRepoImpl);
-        var articles = articleRepository.find(1, 3);
-        articles.forEach(article -> System.out.println(article.getTitle()));
+
+        var articlesInPage1 = articleRepository.getInPage(1, 3);
+        assert articlesInPage1.size() == 3;
     }
 }

@@ -81,4 +81,16 @@ public class Article {
     String sourceLink;
     @Column(name = "channelId")
     String channelId;
+
+    @Override
+    public String toString() {
+        return "Article{" +
+                "guid='" + guid + '\'' +
+                ", title='" + title + '\'' +
+                ", imgUrl='" + imgUrl + '\'' +
+                ", pubDate='" + pubDate + '\'' +
+                ", sourceLink='" + sourceLink + '\'' +
+                ", channelId='" + channelId + '\'' +
+                '}';
+    }
 }

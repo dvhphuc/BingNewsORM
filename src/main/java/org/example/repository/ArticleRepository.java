@@ -30,7 +30,7 @@ public class ArticleRepository {
         return repository.findAll();
     }
 
-    public List<Article> find(Predicate<Article> predicate) throws Exception {
+    public List<Article> getInPage(Predicate<Article> predicate) throws Exception {
         return repository.find(predicate);
     }
 
@@ -38,7 +38,7 @@ public class ArticleRepository {
         return 0;
     }
 
-    public List<Article> find(int page, int size) throws Exception {
+    public List<Article> getInPage(int page, int size) throws Exception {
         return repository.find(page, size);
     }
 }
