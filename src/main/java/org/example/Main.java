@@ -12,7 +12,7 @@ public class Main {
         String connectionString = "jdbc:sqlserver://localhost;database=BingNews;integratedSecurity=true;trustServerCertificate=true;";
         DbConnection.connectionUrl = connectionString;
 
-        int PORT = 8080;
+        int PORT = 80;
 
         HttpServer server = HttpServer.create(new InetSocketAddress(PORT), 0);
 

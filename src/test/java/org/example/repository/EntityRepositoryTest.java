@@ -38,7 +38,7 @@ class EntityRepositoryTest {
         var dbConnection = new DbConnection("jdbc:sqlserver://localhost;database=BingNews;integratedSecurity=true;trustServerCertificate=true;");
         var crudRepoImpl = new CrudRepositoryImpl<Article, String>(Article.class);
         var articleRepository = new ArticleRepository(crudRepoImpl);
-        var articles = articleRepository.getInPage(article -> article.getTitle().equals("title"));
+        var articles = articleRepository.getInPage(article -> article.getTitle().equals("test"));
         articles.forEach(article -> System.out.println(article.getTitle()));
     }
 
