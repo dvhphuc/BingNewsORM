@@ -1,0 +1,3 @@
+{
+  "ConnectionString" : "jdbc:sqlserver://localhost;database=BingNews;integratedSecurity=true;trustServerCertificate=true;"
+}

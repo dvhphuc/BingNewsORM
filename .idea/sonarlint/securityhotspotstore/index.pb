@@ -47,3 +47,7 @@ o
 ?src/main/java/org/example/API/controller/ArticleController.java,d\d\dd75b2e0f990f86752274685a606aceb190bcffe
 ]
 -src/main/java/org/example/API/WebService.java,c\7\c7d2d78fbf152732fd5cf68d794e21457c861ae3
+f
+6src/main/java/org/example/annotation/PathVariable.java,1\1\11815837c10c23e509e724f38ed43e97b09ad582
+l
+<src/main/java/org/example/repository/ArticleRepository1.java,f\3\f3210314e8e56ecde8ec3b13355c2900d37c2178

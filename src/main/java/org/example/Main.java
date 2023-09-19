@@ -1,3 +1,4 @@
+/*
 package org.example;
 
 import com.sun.net.httpserver.HttpServer;
@@ -15,15 +16,10 @@ public class Main {
         int PORT = 8080;
 
         HttpServer server = HttpServer.create(new InetSocketAddress(PORT), 0);
-
         var webService = new WebService(server);
-
-        webService.addController(ArticleController.class);
-
-        webService.createServerContext();
-
+        webService.addControllerClass(ArticleController.class);
+        webService.createServerContextForGetMapping();
         webService.start();
 
-
     }
-}
+}*/
