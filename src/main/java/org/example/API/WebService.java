@@ -28,26 +28,18 @@ public class WebService {
             @Override
             public void handle(HttpExchange exchange) throws IOException {
                 String requestURI = exchange.getRequestURI().toString();
-                String getMappingValue = requestURI.split("/")[2];
                 try {
                     Class<?> controllerClass = getControllerClass(requestURI);
-                    for (Method method : controllerClass.getMethods()) {
-                        if (!method.isAnnotationPresent(GetMapping.class)) {
-                            continue;
-                        }
-                        GetMapping getMapping = method.getAnnotation(GetMapping.class);
-                        if (!getMapping.value().equals(getMappingValue)) {
-                            continue;
-                        }
-                        Object controllerInstance = controllerClass.getConstructor().newInstance();
-                        Object response = method.invoke(controllerInstance);
-                        String responseString = response.toString();
-                        //UTF-8 response
-                        exchange.getResponseHeaders().set("Content-Type", "text/html; charset=UTF-8");
-                        exchange.sendResponseHeaders(200, responseString.getBytes().length);
-                        exchange.getResponseBody().write(responseString.getBytes());
-                        exchange.close();
-                    }
+                    Method controllerMethod = getMethod(requestURI);
+
+                    Object controllerInstance = controllerClass.getConstructor().newInstance();
+                    Object response = controllerMethod.invoke(controllerInstance);
+                    String responseString = response.toString();
+
+                    exchange.getResponseHeaders().set("Content-Type", "text/html; charset=UTF-8");
+                    exchange.sendResponseHeaders(200, responseString.getBytes().length);
+                    exchange.getResponseBody().write(responseString.getBytes());
+                    exchange.close();
 
                 } catch (Exception e) {
                     throw new RuntimeException(e);
@@ -65,5 +57,22 @@ public class WebService {
         String controllerName = requestURISplit[1];
         String controllerClassName = "org.example.API.controller." + controllerName.substring(0, 1).toUpperCase(Locale.ROOT) + controllerName.substring(1) + "Controller";
         return Class.forName(controllerClassName);
+    }
+
+    public Method getMethod(String requestURI) throws Exception {
+        Class<?> controllerClass = getControllerClass(requestURI);
+        String[] requestURISplit = requestURI.split("/");
+        String methodName = requestURISplit[2];
+        for (Method method : controllerClass.getMethods()) {
+            if (!method.isAnnotationPresent(GetMapping.class)) {
+                continue;
+            }
+            GetMapping getMapping = method.getAnnotation(GetMapping.class);
+            if (!getMapping.value().equals(methodName)) {
+                continue;
+            }
+            return method;
+        }
+        throw new Exception("Method not found");
     }
 }

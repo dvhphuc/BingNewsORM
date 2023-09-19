@@ -1,15 +1,11 @@
 
-b	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(ô–â›8ÿ¨¢¿ª1
-u	java:S135^"YReduce the total number of break and continue statements in this loop to use at most one.(ÿÒ£8€©¢¿ª1
-{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ø¦€×şÿÿÿÿ8©¢¿ª1
-W
-java:S1854":Remove this useless assignment to local variable "params".(õøÆ8˜©¢¿ª1
-8
-java:S3626C"Remove this redundant jump.(ûÁİ…8˜©¢¿ª1
-‰
-java:S1130"lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(ô–â›8™©¢¿ª1
-H
-java:S1481"+Remove this unused "params" local variable.(õøÆ8š©¢¿ª1
-X	java:S125"<This block of commented-out lines of code should be removed.(¤Ç¥¯8š©¢¿ª1
-X	java:S125#"<This block of commented-out lines of code should be removed.( áÄ“8›©¢¿ª1
-]	java:S125k"<This block of commented-out lines of code should be removed.(¿Á˜Èøÿÿÿÿ8£©¢¿ª1
+g	java:S112-"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8‹¾ÁÉª1
+g	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(Ş¨‚¶øÿÿÿÿ8‹¾ÁÉª1
+b	java:S112L"FDefine and throw a dedicated exception instead of using a generic one.(†°«„8‹¾ÁÉª1
+b	java:S112>"FDefine and throw a dedicated exception instead of using a generic one.(ŞÛœ8‹¾ÁÉª1
+L
+java:S3740"/Provide the parametrized type for this generic.(ˆ§Ÿ8‹¾ÁÉª1
+t	java:S135B"YReduce the total number of break and continue statements in this loop to use at most one.(¡ŠÒl8‹¾ÁÉª1
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ø¦€×şÿÿÿÿ8‹¾ÁÉª1
+
+java:S1130"lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(Ş¨‚¶øÿÿÿÿ8›¾ÁÉª1
