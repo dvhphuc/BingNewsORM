@@ -1,2 +1,7 @@
 
-{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(çáñÅüÿÿÿÿ8µ÷Úª1
+b	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(—¢ÆÀ8ù½¨çª1
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(çáñÅüÿÿÿÿ8‚»Óåª1
+
+java:S1130"qRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from constructor's body.(—¢ÆÀ8‚¾¨çª1
+S
+java:S1172"6Remove this unused method parameter "articleRepoImpl".(—¢ÆÀ8şØ§çª1

@@ -1,0 +1,34 @@
+
+k
+java:S2095^"NUse try-with-resources or close this "FileOutputStream" in a "finally" clause.(éà¾î8çÙÌ«1
+£
+java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Ó¬¿Ïøÿÿÿÿ8±¯úğª1
+t
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 20 to the 15 allowed.(÷•Õüÿÿÿÿ8ğÙÌ«1
+h
+java:S1854"KRemove this useless assignment to local variable "repositoryInterfaceName".(ÆŠ‹¾8ñÙÌ«1
+Y
+java:S1481"<Remove this unused "repositoryInterfaceName" local variable.(ÆŠ‹¾8óÙÌ«1
+L
+java:S1481."/Remove this unused "returnType" local variable.(­Âôè8÷ÙÌ«1
+H
+java:S1075Z"&Remove this hard-coded path-delimiter.(—ÅÆœùÿÿÿÿ8şÙÌ«1
+c	java:S899]"BDo something with the "boolean" value returned by "createNewFile".(Ğ’Íùÿÿÿÿ8ŒÚÌ«1
+I
+java:S1872g"'Use an "instanceof" comparison instead.(ã®äÿÿÿÿÿ8˜ÚÌ«1
+I
+java:S1872j"'Use an "instanceof" comparison instead.(é–ãôşÿÿÿÿ8›ÚÌ«1
+I
+java:S1872m"'Use an "instanceof" comparison instead.(›ê±úÿÿÿÿ8ÚÌ«1
+I
+java:S1872p"'Use an "instanceof" comparison instead.(ûÎ©úÿÿÿÿ8ÚÌ«1
+O
+java:S1172x"-Remove this unused method parameter "entity".(Ó›‡”ûÿÿÿÿ8¢ÚÌ«1
+x
+java:S3923y"[Remove this conditional structure or edit its code blocks so that they're not all the same.(Ã€8¤ÚÌ«1
+S
+java:S1128"6Remove this unused import 'org.example.model.Article'.(Ä£²8«ÚÌ«1
+_
+java:S1128"BRemove this unused import 'org.example.repository.CrudRepository'.(Û÷ûô8«ÚÌ«1
+M
+java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8«ÚÌ«1

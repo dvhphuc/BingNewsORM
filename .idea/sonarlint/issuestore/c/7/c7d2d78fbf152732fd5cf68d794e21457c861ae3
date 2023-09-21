@@ -1,16 +1,4 @@
 
-g	java:S112+"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8ªÕ°İª1
-b	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(åï§ï8ªÕ°İª1
-b	java:S112A"FDefine and throw a dedicated exception instead of using a generic one.(À”Æ‚8Äˆ±İª1
-L
-java:S3740"/Provide the parametrized type for this generic.(ˆ§Ÿ8«Õ°İª1
-{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ø¦€×şÿÿÿÿ8½Õ°İª1
-‰
-java:S1130"lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(åï§ï8ŞÕ°İª1
-]	java:S125 "<This block of commented-out lines of code should be removed.(ğ‰ºğÿÿÿÿÿ8ìÕ°İª1
-›
-java:S11305"yRemove the declaration of thrown exception 'java.lang.ClassNotFoundException', as it cannot be thrown from method's body.(¼ûÈÇúÿÿÿÿ8ûÕ°İª1
-e
-java:S1854B"CRemove this useless assignment to local variable "controllerClass".(œò¥óÿÿÿÿÿ8íˆ±İª1
-V
-java:S1481B"4Remove this unused "controllerClass" local variable.(œò¥óÿÿÿÿÿ8îˆ±İª1
+7
+java:S1220""Move this file to a named package.8”â—áª1
+X	java:S125"<This block of commented-out lines of code should be removed.(şÖşĞ8›â—áª1

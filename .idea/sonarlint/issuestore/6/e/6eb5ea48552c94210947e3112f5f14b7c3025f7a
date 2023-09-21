@@ -1,27 +1,31 @@
 
-m	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ò°¼ 8èÀ–Ÿª1
+m	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ò°¼ 8Ğ—À«1
+}
+java:S1104"[Make persistentClass a static final constant or non-public and provide accessors if needed.(¯—¯ùÿÿÿÿ8Ğ—À«1
 i
-java:S20950"GUse try-with-resources or close this "Statement" in a "finally" clause.(Áù§²ùÿÿÿÿ8æï®Ÿª1
+java:S2095O"GUse try-with-resources or close this "Statement" in a "finally" clause.(Áù§²ùÿÿÿÿ8ï—À«1
 e
-java:S2095/"HUse try-with-resources or close this "Connection" in a "finally" clause.(û”ÜÙ8åï®Ÿª1
+java:S2095="HUse try-with-resources or close this "Connection" in a "finally" clause.(û”ÜÙ8ï—À«1
 e
-java:S2095@"HUse try-with-resources or close this "Connection" in a "finally" clause.(û”ÜÙ8æï®Ÿª1
-e
-java:S2095"HUse try-with-resources or close this "Connection" in a "finally" clause.(û”ÜÙ8åï®Ÿª1
+java:S2095N"HUse try-with-resources or close this "Connection" in a "finally" clause.(û”ÜÙ8ï—À«1
 i
-java:S2095"GUse try-with-resources or close this "Statement" in a "finally" clause.(Áù§²ùÿÿÿÿ8æï®Ÿª1
-i
-java:S2095$"GUse try-with-resources or close this "Statement" in a "finally" clause.(Áù§²ùÿÿÿÿ8çï®Ÿª1
+java:S2095)"GUse try-with-resources or close this "Statement" in a "finally" clause.(Áù§²ùÿÿÿÿ8ï—À«1
 e
-java:S2095#"HUse try-with-resources or close this "Connection" in a "finally" clause.(û”ÜÙ8æï®Ÿª1
+java:S2095("HUse try-with-resources or close this "Connection" in a "finally" clause.(û”ÜÙ8ï—À«1
+e
+java:S20951"HUse try-with-resources or close this "Connection" in a "finally" clause.(û”ÜÙ8ï—À«1
 i
-java:S2095A"GUse try-with-resources or close this "Statement" in a "finally" clause.(Áù§²ùÿÿÿÿ8ìï®Ÿª1
-d	java:S119"IRename this generic name to match the regular expression '^[A-Z][0-9]?$'.(´ÍĞB8øÀ–Ÿª1
+java:S2095>"GUse try-with-resources or close this "Statement" in a "finally" clause.(Áù§²ùÿÿÿÿ8ï—À«1
+i
+java:S20952"GUse try-with-resources or close this "Statement" in a "finally" clause.(Áù§²ùÿÿÿÿ8ï—À«1
+e	java:S119"IRename this generic name to match the regular expression '^[A-Z][0-9]?$'.(úÖ¥ÿ8ï—À«1
 Y
-java:S1854C"=Remove this useless assignment to local variable "resultSet".(¯ã×8ˆÁ–Ÿª1
+java:S1854Q"=Remove this useless assignment to local variable "resultSet".(¯ã×8ï—À«1
 J
-java:S1481C".Remove this unused "resultSet" local variable.(¯ã×8ˆÁ–Ÿª1
+java:S1481Q".Remove this unused "resultSet" local variable.(¯ã×8ï—À«1
 I
-java:S3011Z",This accessibility update should be removed.(˜ÂÓ˜8ˆÁ–Ÿª1
+java:S3011h",This accessibility update should be removed.(˜ÂÓ˜8ï—À«1
 I
-java:S3011b",This accessibility bypass should be removed.(óƒ¤È8ˆÁ–Ÿª1
+java:S3011p",This accessibility bypass should be removed.(óƒ¤È8ï—À«1
+b
+java:S1128"ERemove this unused import 'org.example.repository.ArticleRepository'.(İ­Ì8ÿ—À«1

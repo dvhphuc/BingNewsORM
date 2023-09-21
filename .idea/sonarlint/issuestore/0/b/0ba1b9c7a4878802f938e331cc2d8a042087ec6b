@@ -1,5 +1,14 @@
 
-r	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(…æÏÍÿÿÿÿÿ8Î¥°Ýª1
+j
+java:S1854"HRemove this useless assignment to local variable "interfaceToImplement".(õ’‹ þÿÿÿÿ8›¶çœ«1
+]
+java:S1854"@Remove this useless assignment to local variable "dbConnection".(´´¥å8›¶çœ«1
 b
-java:S1124
-"EReorder the modifiers to comply with the Java Language Specification.(Á¾Ó¿8Õ¥°Ýª1
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(Á¾Ó¿8›¶çœ«1
+I
+java:S2440",Remove this instantiation of "DbConnection".(´´¥å8«¶çœ«1
+N
+java:S1481"1Remove this unused "dbConnection" local variable.(´´¥å8«¶çœ«1
+[
+java:S1481"9Remove this unused "interfaceToImplement" local variable.(õ’‹ þÿÿÿÿ8«¶çœ«1
+L	java:S106"+Replace this use of System.out by a logger.(ÓãÅ¥ûÿÿÿÿ8«¶çœ«1

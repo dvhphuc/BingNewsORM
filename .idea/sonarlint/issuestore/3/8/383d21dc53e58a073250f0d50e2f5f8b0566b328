@@ -1,6 +1,10 @@
 
-a	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(Æ¨8×œ®¸©1
-g	java:S112	"FDefine and throw a dedicated exception instead of using a generic one.(Ü‚¯úÿÿÿÿ8Å§Ü¸©1
+a	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(Æ¨8â»¨¼©1
+g	java:S112	"FDefine and throw a dedicated exception instead of using a generic one.(‰†Ùõùÿÿÿÿ8õÔèåª1
 b	java:S112
-"FDefine and throw a dedicated exception instead of using a generic one.(ºÏƒƒ8â»¨¼©1
-e	java:S119"IRename this generic name to match the regular expression '^[A-Z][0-9]?$'.(š®Ò8Ùœ®¸©1
+"FDefine and throw a dedicated exception instead of using a generic one.(Çœº8õÔèåª1
+g	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(Ü‚¯úÿÿÿÿ8¯ÛÔ«1
+b	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(ºÏƒƒ8¯ÛÔ«1
+e	java:S119"IRename this generic name to match the regular expression '^[A-Z][0-9]?$'.(š®Ò8Ùœ®¸©1
+W
+java:S1128":Remove this unused import 'org.example.annotation.Entity'.(”ö©8µÛÔ«1

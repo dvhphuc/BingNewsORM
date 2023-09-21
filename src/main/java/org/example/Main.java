@@ -1,25 +1,19 @@
-/*
+
 package org.example;
 
-import com.sun.net.httpserver.HttpServer;
-import org.example.API.WebService;
-import org.example.API.controller.ArticleController;
-
-import java.net.InetSocketAddress;
+import configuration.ConfigReader;
+import org.example.repository.ArticleRepository;
+import org.example.scanner.RepositoryFactory;
 
 public class Main {
     static public void main(String[] args) throws Exception {
+        DbConnection dbConnection = new DbConnection(ConfigReader.getConnectionString());
 
-        String connectionString = "jdbc:sqlserver://localhost;database=BingNews;integratedSecurity=true;trustServerCertificate=true;";
-        DbConnection.connectionUrl = connectionString;
-
-        int PORT = 8080;
-
-        HttpServer server = HttpServer.create(new InetSocketAddress(PORT), 0);
-        var webService = new WebService(server);
-        webService.addControllerClass(ArticleController.class);
-        webService.createServerContextForGetMapping();
-        webService.start();
-
+        Class<?> interfaceToImplement = ArticleRepository.class;
+        ArticleRepository articleRepository = (ArticleRepository) RepositoryFactory.createRepoImpl(interfaceToImplement);
+        System.out.println(articleRepository.findAll().size());
     }
-}*/
+
+
+
+}

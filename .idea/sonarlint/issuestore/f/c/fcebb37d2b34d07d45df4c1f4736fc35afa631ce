@@ -1,0 +1,10 @@
+
+L
+java:S3740	"/Provide the parametrized type for this generic.(íÅÊ¼8âÿñ›«1
+Q
+java:S3740
+"/Provide the parametrized type for this generic.(Œª§şÿÿÿÿ8ãÿñ›«1
+r	java:S117
+"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Œª§şÿÿÿÿ8äÿñ›«1
+G	java:S106"+Replace this use of System.out by a logger.(©³¬8Ë“ò›«1
+G	java:S106"+Replace this use of System.out by a logger.(üÀÀ8Ì“ò›«1

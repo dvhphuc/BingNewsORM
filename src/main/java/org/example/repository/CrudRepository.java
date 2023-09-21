@@ -5,5 +5,5 @@ import org.example.QueryPredicateExecutor;
 
 import java.util.function.Predicate;
 
-public interface CrudRepository<T,ID> extends Repository<T, ID>, QueryPredicateExecutor<T>, Pagination<T> {
+public interface CrudRepository<T,ID> extends Repository<T, ID> , QueryPredicateExecutor<T>, Pagination<T,ID> {
 }

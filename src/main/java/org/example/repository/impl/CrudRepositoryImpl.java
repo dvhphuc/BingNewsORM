@@ -2,10 +2,13 @@ package org.example.repository.impl;
 
 import org.example.DbConnection;
 import org.example.Pagination;
+import org.example.QueryPredicateExecutor;
 import org.example.query.QueryGenerator;
+import org.example.repository.ArticleRepository;
 import org.example.repository.CrudRepository;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.ParameterizedType;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -14,10 +17,21 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
 
-public class CrudRepositoryImpl<T,ID> implements CrudRepository<T, ID>, Pagination<T> {
-    private Class<T> entityClass;
+public class CrudRepositoryImpl<T,ID> implements CrudRepository<T, ID>, Pagination<T,ID>, QueryPredicateExecutor<T> {
+    private final Class<T> entityClass;
+    public Class<?> persistentClass;
+
+    public CrudRepositoryImpl() {
+        entityClass = null;
+    }
     public CrudRepositoryImpl(Class<T> _entityClass) {
         entityClass = _entityClass;
+        //How can I get the persistentClass from the entityClass at runtime?
+        // Your suggestion is not working
+    }
+
+    public CrudRepositoryImpl(ParameterizedType type) {
+        entityClass = (Class<T>) type.getActualTypeArguments()[0];
     }
 
     @Override
