@@ -30,9 +30,4 @@ class RepositoryFactoryTest {
         assert articleRepoImpl.findAll().size() > 0;
     }
 
-    @Test
-    void testCreateRepo() throws Exception {
-        var dbConnection = new DbConnection(extractDbConnection());
-    }
-
 }

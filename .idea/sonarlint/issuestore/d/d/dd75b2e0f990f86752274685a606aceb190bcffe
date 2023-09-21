@@ -1,7 +1,10 @@
 
-b	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(—¢ÆÀ8ù½¨çª1
+g	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(ŒŠíÖûÿÿÿÿ8ù½¨çª1
+r	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŒŠíÖûÿÿÿÿ8ñ„ž­«1
 {	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(çáñÅüÿÿÿÿ8‚»Óåª1
-Ž
-java:S1130"qRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from constructor's body.(—¢ÆÀ8‚¾¨çª1
-S
-java:S1172"6Remove this unused method parameter "articleRepoImpl".(—¢ÆÀ8þØ§çª1
+“
+java:S1130"qRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from constructor's body.(ŒŠíÖûÿÿÿÿ8‚¾¨çª1
+b
+java:S1128"ERemove this unused import 'org.example.repository.ArticleRepository'.(Ý­ÌŽ8›Ìž­«1
+h
+java:S1128"KRemove this unused import 'org.example.repository.impl.CrudRepositoryImpl'.(›ñÌ×8›Ìž­«1

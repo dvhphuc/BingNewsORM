@@ -3,8 +3,7 @@ package org.example.repository;
 
 import configuration.ConfigReader;
 import org.example.DbConnection;
-import org.example.repository.factory.CrudRepositoryFactory;
-import org.example.scanner.RepositoryFactory;
+import org.example.repository.factory.RepositoryFactory;
 import org.junit.jupiter.api.Test;
 
 class EntityRepositoryTest {

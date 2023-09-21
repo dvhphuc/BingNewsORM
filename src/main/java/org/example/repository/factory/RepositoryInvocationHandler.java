@@ -1,4 +1,4 @@
-package org.example.scanner;
+package org.example.repository.factory;
 
 import org.example.repository.impl.CrudRepositoryImpl;
 

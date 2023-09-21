@@ -1,5 +1,10 @@
 package org.example.API.controller;
 
+import configuration.ConfigReader;
+import org.example.API.service.impl.ArticleService;
+import org.example.DbConnection;
+import org.example.repository.ArticleRepository;
+import org.example.repository.factory.RepositoryFactory;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -7,19 +12,12 @@ import static org.junit.jupiter.api.Assertions.*;
 class ArticleControllerTest {
 
     @Test
-    void getArticles() {
-
+    void testGetArticles() throws Exception {
+        DbConnection dbConnection = new DbConnection(ConfigReader.getConnectionString());
+        var atcileRepository = (ArticleRepository) RepositoryFactory.createRepoImpl(ArticleRepository.class);
+        var articleService = new ArticleService(atcileRepository);
+        var articleController = new ArticleController(articleService);
+        assert articleController.getArticles().length() > 0;
     }
 
-    @Test
-    void getArticle() {
-    }
-
-    @Test
-    void postArticle() {
-    }
-
-    @Test
-    void deleteArticle() {
-    }
 }

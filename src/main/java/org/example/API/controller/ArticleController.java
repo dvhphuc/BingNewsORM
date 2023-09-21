@@ -10,10 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 @Controller("Article")
 public class ArticleController {
     ArticleService articleService;
-    public ArticleController(ArticleService articleRepoImpl) throws Exception {
-        var crudRepoImpl = new CrudRepositoryImpl<Article, String>(Article.class);
-        var articleRepository = (ArticleRepository) crudRepoImpl;
-        articleService = new ArticleService(articleRepository);
+    public ArticleController(ArticleService _articleService) throws Exception {
+        articleService = _articleService;
     }
 
     @GetMapping("articles")

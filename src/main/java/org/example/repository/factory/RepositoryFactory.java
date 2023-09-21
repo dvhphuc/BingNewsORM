@@ -1,10 +1,8 @@
-package org.example.scanner;
+package org.example.repository.factory;
 
-import org.example.repository.ArticleRepository;
 import org.example.repository.CrudRepository;
 import org.example.repository.impl.CrudRepositoryImpl;
 
-import java.lang.reflect.Field;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Proxy;

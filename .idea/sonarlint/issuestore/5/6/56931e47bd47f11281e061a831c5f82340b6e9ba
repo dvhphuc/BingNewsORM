@@ -1,18 +1,0 @@
-
-g	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(Áı¨µùÿÿÿÿ8Ã¹‚’«1
-j
-java:S2095"MUse try-with-resources or close this "FileInputStream" in a "finally" clause.(üÕÍ‡8Ğ¹‚’«1
-k
-java:S2095,"NUse try-with-resources or close this "FileOutputStream" in a "finally" clause.(ŠÀø¯8Î¨ò‘«1
-£
-java:S1186
-"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(àŠ½—ÿÿÿÿÿ8Ñ¨ò‘«1
-T
-java:S1854"7Remove this useless assignment to local variable "fis".(üÕÍ‡8Â†’«1
-_
-java:S1854"=Remove this useless assignment to local variable "className".(Ïšùÿÿÿÿ8üØò‘«1
-P
-java:S1481".Remove this unused "className" local variable.(Ïšùÿÿÿÿ8ıØò‘«1
-E
-java:S1481"(Remove this unused "fis" local variable.(üÕÍ‡8„Â†’«1
-G	java:S106)"+Replace this use of System.out by a logger.(ìáˆ²8Ú¨ò‘«1
