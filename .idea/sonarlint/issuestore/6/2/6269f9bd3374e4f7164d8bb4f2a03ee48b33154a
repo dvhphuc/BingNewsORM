@@ -6,5 +6,3 @@ java:S3740
 "/Provide the parametrized type for this generic.(Œª§Žþÿÿÿÿ8ãÿñ›«1
 r	java:S117
 "QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Œª§Žþÿÿÿÿ8äÿñ›«1
-€
-java:S1488"^Immediately return this expression instead of assigning it to the temporary variable "result".(ŸáÍ…ýÿÿÿÿ8ŸÆþ¬«1

@@ -1,12 +1,8 @@
 
+L
+java:S3740"/Provide the parametrized type for this generic.(»‚¿ğ8Ãßšİ«1
 K
-java:S3740"/Provide the parametrized type for this generic.(¿ÂÊ8æ¤¹¬«1
-K
-java:S3740"/Provide the parametrized type for this generic.(¿8¾Š¶¬«1
-r	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(„€È°ıÿÿÿÿ8˜úÏÀ«1
-?
-java:S1118"Hide this public constructor.(„€È°ıÿÿÿÿ8ÅŠ¶¬«1
-F
-java:S3010")Remove this assignment of "dbConnection".(œŸã­8–¥ĞÀ«1
-M
-java:S1068"0Remove this unused "dbConnection" private field.(ÍåÀ´8©¥ĞÀ«1
+java:S3740"/Provide the parametrized type for this generic.(¿8Ãßšİ«1
+W
+java:S1118
+":Add a private constructor to hide the implicit public one.(‡¡Î8ĞÛ‘ß«1

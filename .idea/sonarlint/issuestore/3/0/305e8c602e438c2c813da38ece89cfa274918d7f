@@ -1,0 +1,4 @@
+
+g	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(┼√√Л     8∙╜ичк1
+У
+java:S1130"qRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from constructor's body.(┼√√Л     8В╛ичк1

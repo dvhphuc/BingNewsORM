@@ -1,31 +1,24 @@
 
-m	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ò°¼ 8Ð—À«1
-}
-java:S1104"[Make persistentClass a static final constant or non-public and provide accessors if needed.(¯—¯ùÿÿÿÿ8Ð—À«1
-e
-java:S2095="HUse try-with-resources or close this "Connection" in a "finally" clause.(û”ÜÙ8ï—À«1
-e
-java:S2095N"HUse try-with-resources or close this "Connection" in a "finally" clause.(û”ÜÙ8ï—À«1
-i
-java:S2095O"GUse try-with-resources or close this "Statement" in a "finally" clause.(Áù§²ùÿÿÿÿ8ï—À«1
-e
-java:S2095("HUse try-with-resources or close this "Connection" in a "finally" clause.(û”ÜÙ8ï—À«1
-i
-java:S20952"GUse try-with-resources or close this "Statement" in a "finally" clause.(Áù§²ùÿÿÿÿ8ï—À«1
-e
-java:S20951"HUse try-with-resources or close this "Connection" in a "finally" clause.(û”ÜÙ8ï—À«1
-i
-java:S2095>"GUse try-with-resources or close this "Statement" in a "finally" clause.(Áù§²ùÿÿÿÿ8ï—À«1
-i
-java:S2095)"GUse try-with-resources or close this "Statement" in a "finally" clause.(Áù§²ùÿÿÿÿ8ï—À«1
-e	java:S119"IRename this generic name to match the regular expression '^[A-Z][0-9]?$'.(úÖ¥ÿ8ï—À«1
-Y
-java:S1854Q"=Remove this useless assignment to local variable "resultSet".(¯ã×8ï—À«1
-J
-java:S1481Q".Remove this unused "resultSet" local variable.(¯ã×8ï—À«1
+g	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(“Ñ¡øÿÿÿÿ8®–šâ«1
+b	java:S112R"FDefine and throw a dedicated exception instead of using a generic one.(ìž„€8ÊÒšâ«1
+e	java:S119"IRename this generic name to match the regular expression '^[A-Z][0-9]?$'.(€¶€8Éð™â«1
+Ž
+java:S1130"qRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from constructor's body.(óÁæß8×Òšâ«1
+“
+java:S1130"qRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from constructor's body.(“Ñ¡øÿÿÿÿ8ØÒšâ«1
+>
+java:S11161"Remove this empty statement.(¦¿¹Éüÿÿÿÿ8Ìð™â«1
 I
-java:S3011h",This accessibility update should be removed.(˜ÂÓ˜8ï—À«1
+java:S3011\",This accessibility update should be removed.(˜ÂÓ˜8Ïð™â«1
 I
-java:S3011p",This accessibility bypass should be removed.(óƒ¤È8ï—À«1
-b
-java:S1128"ERemove this unused import 'org.example.repository.ArticleRepository'.(Ý­ÌŽ8ÿ—À«1
+java:S3011]",This accessibility bypass should be removed.(óƒ¤È8Ïð™â«1
+W
+java:S1128":Remove this unused import 'org.example.annotation.Column'.(¸Áø‚8Òð™â«1
+P
+java:S1128".Remove this unused import 'org.example.model'.(°Ñ ñûÿÿÿÿ8Òð™â«1
+[
+java:S1128">Remove this unused import 'org.example.repository.Pagination'.(´Ñ®ž8Òð™â«1
+l
+java:S1128"JRemove this unused import 'org.example.repository.QueryPredicateExecutor'.(‚ìâÔúÿÿÿÿ8Òð™â«1
+O
+java:S1128"2Remove this unused import 'java.sql.SQLException'.(ÛïÆŸ8Òð™â«1

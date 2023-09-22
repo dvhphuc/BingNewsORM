@@ -1,36 +1,37 @@
 package org.example.dependencyinjection;
 
+import org.example.scanner.RootApp;
+
 import java.util.*;
 import java.util.logging.Logger;
 
 public class DependencyMap {
     private final Map<Class<?>, List<Class<?>>> dependentMap = new HashMap<>();
-    private final Map<Class<?>, List<Class<?>>> parentMap = new HashMap<>();
+    private final Map<Class<?>, List<Class<?>>> parenBean = new HashMap<>();
     private final Set<Class<?>> classesNeedCreateInstance = new HashSet<>();
-    private final DependencyProvider dependencyProvider;
+    private final BeanFactory beanFactory;
 
     private static final Logger logger = Logger.getLogger(DependencyMap.class.getName());
 
-    public DependencyMap(DependencyProvider dependencyProvider) {
-        this.dependencyProvider = dependencyProvider;
+    public DependencyMap(BeanFactory beanFactory) {
+        this.beanFactory = beanFactory;
     }
 
     public void add(Class<?> clazz, List<Class<?>> dependencies) {
         dependentMap.put(clazz, dependencies);
         classesNeedCreateInstance.add(clazz);
         for (Class<?> dependency : dependencies) {
-            parentMap.computeIfAbsent(dependency, k -> new LinkedList<>()).add(clazz);
+            parenBean.computeIfAbsent(dependency, k -> new LinkedList<>()).add(clazz);
             classesNeedCreateInstance.add(dependency);
         }
     }
 
-    public void createDependencyInstance() throws Exception {
+    public void createDependencyInstance() {
         while (!classesNeedCreateInstance.isEmpty()) {
             Class<?> creatableClass = getCreatableClass(classesNeedCreateInstance);
             if (creatableClass == null) {
                 return;
             }
-            Object instance = dependencyProvider.getInstance(creatableClass);
             logger.info("Created instance of " + creatableClass.getName());
             classesNeedCreateInstance.remove(creatableClass);
             updateBeanDependencies(creatableClass); //Remove dependence of creatableClass from other classes
@@ -47,9 +48,9 @@ public class DependencyMap {
     }
 
     public void updateBeanDependencies(Class<?> node) {
-        if (parentMap.get(node) == null)
+        if (parenBean.get(node) == null)
             return;
-        for (var parent : parentMap.get(node)) {
+        for (var parent : parenBean.get(node)) {
             dependentMap.get(parent).remove(node);
         }
     }

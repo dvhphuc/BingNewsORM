@@ -1,18 +1,4 @@
 
 \
-java:S1118":Add a private constructor to hide the implicit public one.(ü˜é´üÿÿÿÿ8Íµèõ©1
-g
-java:S1124	"EReorder the modifiers to comply with the Java Language Specification.(íüŠÿÿÿÿÿÿ8×µèõ©1
-I
-java:S3011",This accessibility update should be removed.(˜ÂÓ˜8Şµèõ©1
-g
-java:S1124$"EReorder the modifiers to comply with the Java Language Specification.(ú…ãûÿÿÿÿ8èµèõ©1
-I
-java:S3011*",This accessibility update should be removed.(˜ÂÓ˜8ëµèõ©1
-g
-java:S1124K"EReorder the modifiers to comply with the Java Language Specification.(óúøŸøÿÿÿÿ8øµèõ©1
-I
-java:S3011Q",This accessibility update should be removed.(˜ÂÓ˜8ûµèõ©1
-b
-java:S1124b"EReorder the modifiers to comply with the Java Language Specification.(»ıÂù8€¶èõ©1
-e	java:S119k"IRename this generic name to match the regular expression '^[A-Z][0-9]?$'.(Öœ•ú8†¶èõ©1
+java:S1118":Add a private constructor to hide the implicit public one.(ü˜é´üÿÿÿÿ8êÑòà«1
+e	java:S119"IRename this generic name to match the regular expression '^[A-Z][0-9]?$'.(Öœ•ú8îÑòà«1

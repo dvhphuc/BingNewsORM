@@ -1,0 +1,9 @@
+
+g	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(’Æëøÿÿÿÿ8°Ìå«1
+
+java:S1130"lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(’Æëøÿÿÿÿ8ÓÌå«1
+W	java:S125""<This block of commented-out lines of code should be removed.(ò¸“i8ÕÌå«1
+Q
+java:S1128"4Remove this unused import 'java.util.stream.Stream'.(ó÷”8ÚÌå«1
+S
+java:S1068"6Remove this unused "dependencyProvider" private field.(ÉÁ¸û8ÛÌå«1

@@ -1,7 +1,7 @@
 package org.example.scanner;
 
 import org.example.annotation.Autowired;
-import org.example.dependencyinjection.DefaultDependencyProvider;
+import org.example.dependencyinjection.DefaultBeanFactory;
 import org.example.dependencyinjection.DependencyMap;
 
 import java.util.ArrayList;
@@ -13,7 +13,7 @@ public class RootApp {
         return dependencyMap;
     }
 
-    private final DependencyMap dependencyMap = new DependencyMap(new DefaultDependencyProvider());
+    private final DependencyMap dependencyMap = new DependencyMap(new DefaultBeanFactory());
 
     private static List<Object> instances = new ArrayList<>();
 
@@ -21,9 +21,14 @@ public class RootApp {
         //This is Root Application
     }
 
+    public static void addInstace(Object instance) {
+        instances.add(instance);
+    }
+
 
 
     public void buidDependenciesMap(Class<?> clazz) {
+        System.out.println(clazz.getSimpleName());
         if (dependencyMap.getDependencies(clazz) == null) {
             dependencyMap.add(clazz, new LinkedList<>());
         }
@@ -37,7 +42,6 @@ public class RootApp {
                 dependencyMap.getDependencies(clazz).add(field.getType());
 
             var subClass = field.getType(); // subClass is Autowired class
-            System.out.println(subClass);
             buidDependenciesMap(subClass);
         }
     }

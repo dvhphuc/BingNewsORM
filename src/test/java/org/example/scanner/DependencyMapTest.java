@@ -1,8 +1,8 @@
 package org.example.scanner;
 
-import org.example.dependencyinjection.DefaultDependencyProvider;
+import org.example.dependencyinjection.DefaultBeanFactory;
 import org.example.dependencyinjection.DependencyMap;
-import org.example.dependencyinjection.DependencyProvider;
+import org.example.dependencyinjection.BeanFactory;
 import org.junit.jupiter.api.Test;
 
 import java.util.LinkedList;
@@ -13,9 +13,9 @@ class DependencyMapTest {
     @Test
     void testAdd() {
 
-        DependencyProvider dependencyProvider = new DefaultDependencyProvider();
+        BeanFactory beanFactory = new DefaultBeanFactory();
 
-        DependencyMap dependencyMap = new DependencyMap(dependencyProvider);
+        DependencyMap dependencyMap = new DependencyMap(beanFactory);
         dependencyMap.add(ClassA.class, new LinkedList<>(List.of(ClassB.class)));
         dependencyMap.add(ClassB.class, new LinkedList<>(List.of(ClassC.class)));
         dependencyMap.add(ClassC.class, new LinkedList<>());
@@ -25,9 +25,9 @@ class DependencyMapTest {
 
     @Test
     void testArrangeDependenciesInOrder() throws Exception {
-        DependencyProvider dependencyProvider = new DefaultDependencyProvider();
+        BeanFactory beanFactory = new DefaultBeanFactory();
 
-        DependencyMap dependencyMap = new DependencyMap(dependencyProvider);
+        DependencyMap dependencyMap = new DependencyMap(beanFactory);
         dependencyMap.add(ClassA.class, new LinkedList<>(List.of(ClassB.class)));
         dependencyMap.add(ClassB.class, new LinkedList<>(List.of(ClassC.class)));
         dependencyMap.add(ClassC.class, new LinkedList<>(List.of(ClassC1.class)));
