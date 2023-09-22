@@ -1,7 +1,5 @@
 package org.example.repository;
 
-import org.example.repository.Repository;
-
 import java.util.List;
 
 public interface Pagination<T,ID> extends Repository<T,ID> {

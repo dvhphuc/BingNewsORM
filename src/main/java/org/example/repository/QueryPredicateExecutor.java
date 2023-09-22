@@ -1,7 +1,6 @@
 package org.example.repository;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.function.Predicate;
 
 public interface QueryPredicateExecutor<T> {

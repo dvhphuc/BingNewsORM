@@ -11,11 +11,6 @@ public class DefaultDependencyProvider implements DependencyProvider {
         if (instances.containsKey(clazz)) {
             return (T) instances.get(clazz);
         }
-
-        if (clazz == null) {
-            throw new Exception("Class is null");
-        }
-
         T instance = clazz.getDeclaredConstructor().newInstance();
         instances.put(clazz, instance);
         return instance;
