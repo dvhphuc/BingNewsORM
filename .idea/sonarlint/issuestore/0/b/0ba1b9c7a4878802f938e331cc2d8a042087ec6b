@@ -1,13 +1,6 @@
 
-]
-java:S1854
-"@Remove this useless assignment to local variable "dbConnection".(´´¥å8æò«¬«1
 b
-java:S1124	"EReorder the modifiers to comply with the Java Language Specification.(Á¾Ó¿8çò«¬«1
-I
-java:S2440
-",Remove this instantiation of "DbConnection".(´´¥å8çò«¬«1
-N
-java:S1481
-"1Remove this unused "dbConnection" local variable.(´´¥å8èò«¬«1
-G	java:S106"+Replace this use of System.out by a logger.(îÀž‹8àÊ¼¬«1
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(Á¾Ó¿8É´Ô²«1
+G	java:S106"+Replace this use of System.out by a logger.(îÀž‹8Ê´Ô²«1
+Y
+java:S1128"7Remove this unused import 'configuration.ConfigReader'.(±Ö…þúÿÿÿÿ8¶ëÕ²«1

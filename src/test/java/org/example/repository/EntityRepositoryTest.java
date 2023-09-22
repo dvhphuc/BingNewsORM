@@ -11,11 +11,11 @@ class EntityRepositoryTest {
     @Test
     void testUseInterfaceExtendJPA() throws Exception {
         DbConnection dbConnection = new DbConnection(ConfigReader.getConnectionString());
-        ArticleRepository articleRepository = (ArticleRepository) RepositoryFactory.createRepoImpl(ArticleRepository.class);
-        assert articleRepository.findAll().size() > 0;
+        var repo = (ArticleRepository) RepositoryFactory.createRepoImpl(ArticleRepository.class);
+        assert repo.findAll().size() > 0;
 
-        AdTopicRepository adTopicRepository = (AdTopicRepository) RepositoryFactory.createRepoImpl(AdTopicRepository.class);
-        assert adTopicRepository.findAll().size() > 0;
+        var adRepo = (AdTopicRepository) RepositoryFactory.createRepoImpl(AdTopicRepository.class);
+        assert adRepo.findAll().size() > 0;
     }
 
 

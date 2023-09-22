@@ -9,4 +9,5 @@ import java.lang.annotation.Target;
 @Target(ElementType.TYPE)
 public @interface Entity {
     String name() default "";
+    Class<?>[] implementations() default {};
 }

@@ -1,10 +1,9 @@
 package org.example.repository.impl;
 
 import org.example.DbConnection;
-import org.example.Pagination;
-import org.example.QueryPredicateExecutor;
+import org.example.repository.Pagination;
+import org.example.repository.QueryPredicateExecutor;
 import org.example.query.QueryGenerator;
-import org.example.repository.ArticleRepository;
 import org.example.repository.CrudRepository;
 
 import java.lang.reflect.Field;
@@ -19,26 +18,19 @@ import java.util.function.Predicate;
 
 public class CrudRepositoryImpl<T,ID> implements CrudRepository<T, ID>, Pagination<T,ID>, QueryPredicateExecutor<T> {
     private final Class<T> entityClass;
-    public Class<?> persistentClass;
+    private final Statement statement = DbConnection.getStatement();
 
-    public CrudRepositoryImpl() {
-        entityClass = null;
-    }
-    public CrudRepositoryImpl(Class<T> _entityClass) {
-        entityClass = _entityClass;
-        //How can I get the persistentClass from the entityClass at runtime?
-        // Your suggestion is not working
+    public CrudRepositoryImpl(Class<T> entityClass) throws Exception {
+        this.entityClass = entityClass;
     }
 
-    public CrudRepositoryImpl(ParameterizedType type) {
+    public CrudRepositoryImpl(ParameterizedType type) throws Exception {
         entityClass = (Class<T>) type.getActualTypeArguments()[0];
     }
 
     @Override
     public void save(T entity) throws Exception {
         String insertQuery = QueryGenerator.insertQuery(entity);
-        var dbConnection = DriverManager.getConnection(DbConnection.getConnectionUrl());
-        var statement = dbConnection.createStatement();
         statement.execute(insertQuery);
     }
 
@@ -46,8 +38,6 @@ public class CrudRepositoryImpl<T,ID> implements CrudRepository<T, ID>, Paginati
     public void update(T entity) {
         String updateQuery = QueryGenerator.updateQuery(entity);
         try {
-            var dbConnection = DriverManager.getConnection(DbConnection.getConnectionUrl());
-            var statement = dbConnection.createStatement();
             statement.execute(updateQuery);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -58,8 +48,6 @@ public class CrudRepositoryImpl<T,ID> implements CrudRepository<T, ID>, Paginati
     public void delete(ID id) {
         String deleteQuery = QueryGenerator.deleteQuery(id);
         try {
-            var dbConnection = DriverManager.getConnection(DbConnection.getConnectionUrl());
-            var statement = dbConnection.createStatement();
             statement.execute(deleteQuery);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -75,16 +63,12 @@ public class CrudRepositoryImpl<T,ID> implements CrudRepository<T, ID>, Paginati
 
     @Override
     public List<T> findAll() throws Exception {
-        var dbConnection = DriverManager.getConnection(DbConnection.getConnectionUrl());
-        var statement = dbConnection.createStatement();
         String selectQuery = QueryGenerator.selectAllQuery(entityClass);
-        var resultSet = statement.executeQuery(selectQuery);
         return getResultSet(statement, selectQuery);
     }
 
     @Override
     public List<T> find(Predicate<T> predicate) throws Exception {
-        var statement = DbConnection.getConnection().createStatement();
         var selectAllQuery = QueryGenerator.selectAllQuery(entityClass);
         List<T> list = getResultSet(statement, selectAllQuery);
         List<T> filteredList = new ArrayList<>();
@@ -99,10 +83,7 @@ public class CrudRepositoryImpl<T,ID> implements CrudRepository<T, ID>, Paginati
     private List<T> getResultSet(Statement statement, String selectAllQuery) throws SQLException, InstantiationException, IllegalAccessException, java.lang.reflect.InvocationTargetException, NoSuchMethodException {
         var resultSet = statement.executeQuery(selectAllQuery);
 
-        List<Field> fields = Arrays.asList(entityClass.getDeclaredFields());
-        for(Field field: fields) {
-            field.setAccessible(true);
-        }
+        Field[] fields = entityClass.getDeclaredFields();
 
         List<T> list = new ArrayList<>();
 
