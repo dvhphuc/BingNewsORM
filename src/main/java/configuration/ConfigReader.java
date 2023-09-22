@@ -1,7 +1,6 @@
 package configuration;
 
 import java.io.FileInputStream;
-import java.sql.Connection;
 import java.util.Properties;
 
 public class ConfigReader {
