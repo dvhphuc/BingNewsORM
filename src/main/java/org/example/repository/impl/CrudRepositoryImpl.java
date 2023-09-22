@@ -8,50 +8,45 @@ import org.example.repository.CrudRepository;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
 
-public class CrudRepositoryImpl<T,ID> implements CrudRepository<T, ID>, Pagination<T,ID>, QueryPredicateExecutor<T> {
+public class CrudRepositoryImpl<T, ID> implements CrudRepository<T, ID>, Pagination<T, ID>, QueryPredicateExecutor<T> {
     private final Class<T> entityClass;
-    private final Statement statement = DbConnection.getStatement();
+    private final DbConnection dbConnection;
 
-    public CrudRepositoryImpl(Class<T> entityClass) throws Exception {
+    public CrudRepositoryImpl(Class<T> entityClass, DbConnection dbConnection) {
         this.entityClass = entityClass;
+        this.dbConnection = dbConnection;
     }
 
-    public CrudRepositoryImpl(ParameterizedType type) throws Exception {
+    public CrudRepositoryImpl(ParameterizedType type, DbConnection dbConnection) {
         entityClass = (Class<T>) type.getActualTypeArguments()[0];
+        this.dbConnection = dbConnection;
     }
 
     @Override
     public void save(T entity) throws Exception {
         String insertQuery = QueryGenerator.insertQuery(entity);
+        var statement = DbConnection.getStatement();
         statement.execute(insertQuery);
     }
 
     @Override
-    public void update(T entity) {
+    public void update(T entity) throws Exception {
         String updateQuery = QueryGenerator.updateQuery(entity);
-        try {
-            statement.execute(updateQuery);
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
+        var statement = DbConnection.getStatement();
+        statement.execute(updateQuery);
     }
 
     @Override
-    public void delete(ID id) {
+    public void delete(ID id) throws Exception {
         String deleteQuery = QueryGenerator.deleteQuery(id);
-        try {
-            statement.execute(deleteQuery);
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
+        var statement = DbConnection.getStatement();
+        statement.execute(deleteQuery);
     }
 
     @Override
@@ -63,17 +58,19 @@ public class CrudRepositoryImpl<T,ID> implements CrudRepository<T, ID>, Paginati
 
     @Override
     public List<T> findAll() throws Exception {
+        var statement = DbConnection.getConnection().createStatement();
         String selectQuery = QueryGenerator.selectAllQuery(entityClass);
         return getResultSet(statement, selectQuery);
     }
 
     @Override
     public List<T> find(Predicate<T> predicate) throws Exception {
+        var statement = DbConnection.getConnection().createStatement();
         var selectAllQuery = QueryGenerator.selectAllQuery(entityClass);
         List<T> list = getResultSet(statement, selectAllQuery);
         List<T> filteredList = new ArrayList<>();
-        for(T entity: list) {
-            if(predicate.test(entity)) {
+        for (T entity : list) {
+            if (predicate.test(entity)) {
                 filteredList.add(entity);
             }
         }
@@ -89,7 +86,7 @@ public class CrudRepositoryImpl<T,ID> implements CrudRepository<T, ID>, Paginati
 
         while (resultSet.next()) {
             T entity = entityClass.getDeclaredConstructor().newInstance();
-            for(Field field: fields) {
+            for (Field field : fields) {
                 field.set(entity, resultSet.getObject(field.getName()));
             }
             list.add(entity);
@@ -109,7 +106,7 @@ public class CrudRepositoryImpl<T,ID> implements CrudRepository<T, ID>, Paginati
         var selectAllQuery = QueryGenerator.selectAllQuery(entityClass);
         List<T> list = getResultSet(statement, selectAllQuery);
         List<T> filteredList = new ArrayList<>();
-        for(int i = (page - 1) * size; i < page * size; i++) {
+        for (int i = (page - 1) * size; i < page * size; i++) {
             filteredList.add(list.get(i));
         }
         return filteredList;

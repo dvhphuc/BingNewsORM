@@ -20,4 +20,8 @@ public class DbConnection {
     public static Statement getStatement() throws Exception {
         return getConnection().createStatement();
     }
+
+    public static void closeConnection() throws Exception {
+        getConnection().close();
+    }
 }
