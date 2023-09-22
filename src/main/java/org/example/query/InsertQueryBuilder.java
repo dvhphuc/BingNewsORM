@@ -22,11 +22,7 @@ public class InsertQueryBuilder {
     private void buildColumns(StringBuilder queryBuilder, Field[] fields) {
         for (Field field : fields) {
             field.setAccessible(true);
-            try {
-                queryBuilder.append(field.getName()).append(", ");
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            queryBuilder.append(field.getName()).append(", ");
         }
         queryBuilder.setLength(queryBuilder.length() - 2); // Remove the trailing comma and space
     }

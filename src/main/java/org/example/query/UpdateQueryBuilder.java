@@ -18,15 +18,12 @@ public class UpdateQueryBuilder {
         queryBuilder.append("UPDATE ").append(className).append(" SET ");
     }
 
-    private void buildSetClause(StringBuilder queryBuilder, Object object) {
+    private void buildSetClause(StringBuilder queryBuilder, Object object) throws IllegalAccessException {
         Field[] fields = object.getClass().getDeclaredFields();
         for (Field field : fields) {
             field.setAccessible(true);
-            try {
-                queryBuilder.append(field.getName()).append(" = '").append(field.get(object)).append("', ");
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            queryBuilder.append(field.getName()).append(" = '").append(field.get(object)).append("', ");
+
         }
         queryBuilder.setLength(queryBuilder.length() - 2); // Remove the trailing comma and space
     }
