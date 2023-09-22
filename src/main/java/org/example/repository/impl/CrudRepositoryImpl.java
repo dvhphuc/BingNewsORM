@@ -20,11 +20,14 @@ import java.util.function.Predicate;
 public class CrudRepositoryImpl<T, ID> implements CrudRepository<T, ID> {
     private final Class<T> entityClass;
 
-    public CrudRepositoryImpl(Class<T> entityClass) {
+    private final Statement statement = DbConnection.getConnection().createStatement();
+
+
+    public CrudRepositoryImpl(Class<T> entityClass) throws Exception {
         this.entityClass = entityClass;
     }
 
-    public CrudRepositoryImpl(ParameterizedType type) {
+    public CrudRepositoryImpl(ParameterizedType type) throws Exception {
         entityClass = (Class<T>) type.getActualTypeArguments()[0];
     }
 
@@ -77,7 +80,6 @@ public class CrudRepositoryImpl<T, ID> implements CrudRepository<T, ID> {
     }
 
     private List<T> getResultSet(String sqlQuery) throws Exception {
-        var statement = DbConnection.getConnection().createStatement();
         var resultSet = statement.executeQuery(sqlQuery);
 
         Field[] fields = entityClass.getDeclaredFields();

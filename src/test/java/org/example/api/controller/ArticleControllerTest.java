@@ -13,6 +13,7 @@ class ArticleControllerTest {
         var articleService = new ArticleService(atcileRepository);
         var articleController = new ArticleController(articleService);
         assert articleController.getArticles().length() > 0;
+
     }
 
 }
