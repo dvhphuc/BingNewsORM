@@ -2,16 +2,14 @@ package org.example.API.controller;
 import org.example.API.service.impl.ArticleService;
 import org.example.annotation.*;
 import org.example.model.Article;
-import org.example.repository.ArticleRepository;
-import org.example.repository.impl.CrudRepositoryImpl;
 
 import javax.servlet.http.HttpServletRequest;
 
 @Controller("Article")
 public class ArticleController {
     ArticleService articleService;
-    public ArticleController(ArticleService _articleService) throws Exception {
-        articleService = _articleService;
+    public ArticleController(ArticleService articleService) throws Exception {
+        this.articleService = articleService;
     }
 
     @GetMapping("articles")

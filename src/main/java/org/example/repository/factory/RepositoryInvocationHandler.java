@@ -12,7 +12,6 @@ public class RepositoryInvocationHandler implements InvocationHandler {
     }
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        Object result = method.invoke(crudRepositoryImpl, args);
-        return result;
+        return method.invoke(crudRepositoryImpl, args);
     }
 }

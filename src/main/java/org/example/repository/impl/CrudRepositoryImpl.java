@@ -1,5 +1,6 @@
 package org.example.repository.impl;
 
+import org.example.model.*;
 import org.example.DbConnection;
 import org.example.repository.Pagination;
 import org.example.repository.QueryPredicateExecutor;
@@ -87,6 +88,7 @@ public class CrudRepositoryImpl<T, ID> implements CrudRepository<T, ID>, Paginat
         while (resultSet.next()) {
             T entity = entityClass.getDeclaredConstructor().newInstance();
             for (Field field : fields) {
+                field.setAccessible(true);
                 field.set(entity, resultSet.getObject(field.getName()));
             }
             list.add(entity);
