@@ -3,7 +3,7 @@ package org.example.query;
 import java.lang.reflect.Field;
 
 public class InsertQueryBuilder {
-    public String build(Object object) {
+    public String build(Object object) throws IllegalAccessException {
         String className = object.getClass().getSimpleName();
         Field[] fields = object.getClass().getDeclaredFields();
         StringBuilder queryBuilder = new StringBuilder();
@@ -31,15 +31,11 @@ public class InsertQueryBuilder {
         queryBuilder.setLength(queryBuilder.length() - 2); // Remove the trailing comma and space
     }
 
-    private void buildValues(StringBuilder queryBuilder, Field[] fields, Object object) {
+    private void buildValues(StringBuilder queryBuilder, Field[] fields, Object object) throws IllegalAccessException {
         queryBuilder.append(") VALUES (");
         for (Field field : fields) {
             field.setAccessible(true);
-            try {
-                queryBuilder.append("'").append(field.get(object)).append("', ");
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            queryBuilder.append("'").append(field.get(object)).append("', ");
         }
         queryBuilder.setLength(queryBuilder.length() - 2); // Remove the trailing comma and space
         queryBuilder.append(")");

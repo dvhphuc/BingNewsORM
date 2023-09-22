@@ -1,15 +1,15 @@
 package org.example.query;
 
 public class QueryGenerator {
-    public static String insertQuery(Object object) {
+    public static String insertQuery(Object object) throws IllegalAccessException {
         return new InsertQueryBuilder().build(object);
     }
 
-    public static String updateQuery(Object object) {
+    public static String updateQuery(Object object) throws IllegalAccessException {
         return new UpdateQueryBuilder().build(object);
     }
 
-    public static String deleteQuery(Object object) {
+    public static String deleteQuery(Object object) throws IllegalAccessException {
         return new DeleteQueryBuilder().build(object);
     }
 
