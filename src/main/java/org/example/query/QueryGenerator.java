@@ -1,10 +1,5 @@
 package org.example.query;
 
-import org.example.annotation.Entity;
-import org.example.annotation.Primary;
-
-import java.lang.reflect.Field;
-
 public class QueryGenerator {
     public static String insertQuery(Object object) {
         return new InsertQueryBuilder().build(object);
