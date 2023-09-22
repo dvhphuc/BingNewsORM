@@ -13,7 +13,6 @@ class ArticleControllerTest {
 
     @Test
     void testGetArticles() throws Exception {
-        DbConnection dbConnection = new DbConnection(ConfigReader.getConnectionString());
         var atcileRepository = (ArticleRepository) RepositoryFactory.createRepoImpl(ArticleRepository.class);
         var articleService = new ArticleService(atcileRepository);
         var articleController = new ArticleController(articleService);

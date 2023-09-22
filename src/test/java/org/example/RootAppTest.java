@@ -9,5 +9,6 @@ public class RootAppTest {
     void testRegisterClass() throws Exception {
         var rootApp = new RootApp();
         rootApp.register(ClassA.class);
+        assert rootApp.getDependencyMap().getDependencies(ClassA.class).size() == 1;
     }
 }

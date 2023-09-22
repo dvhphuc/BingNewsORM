@@ -37,5 +37,7 @@ class RepositoryFactoryTest {
 
     @Test
     void testGetAllClasses() {
+        var rootApp = new RootApp();
+        assert rootApp.getDependencyMap().getDependencies(CrudRepository.class).size() > 0;
     }
 }
