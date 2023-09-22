@@ -7,10 +7,10 @@ import org.example.annotation.Primary;
 @Entity(name = "AdTopic")
 public class AdTopic {
     @Primary
-    @Column(name = "guid")
+    @Column(value = "guid")
     String guid;
-    @Column(name = "title")
+    @Column(value = "title")
     String title;
-    @Column(name = "imgUrl")
+    @Column(value = "imgUrl")
     String imgUrl;
 }

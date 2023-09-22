@@ -1,6 +1,7 @@
 package org.example.query;
 
 import java.lang.reflect.Field;
+import java.util.stream.Stream;
 
 public class InsertQueryBuilder {
     public String build(Object object) throws IllegalAccessException {
@@ -20,10 +21,8 @@ public class InsertQueryBuilder {
     }
 
     private void buildColumns(StringBuilder queryBuilder, Field[] fields) {
-        for (Field field : fields) {
-            field.setAccessible(true);
-            queryBuilder.append(field.getName()).append(", ");
-        }
+        Stream.of(fields)
+                .forEach(field -> queryBuilder.append(field.getName()).append(", "));
         queryBuilder.setLength(queryBuilder.length() - 2); // Remove the trailing comma and space
     }
 

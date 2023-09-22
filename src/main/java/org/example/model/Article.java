@@ -7,11 +7,11 @@ import org.example.annotation.Primary;
 @Entity(name = "article")
 public class Article {
     @Primary
-    @Column(name = "guid")
+    @Column(value = "guid")
     String guid;
-    @Column(name = "title")
+    @Column(value = "title")
     String title;
-    @Column(name = "imgUrl")
+    @Column(value = "imgUrl")
     String imgUrl;
 
     public Article(String guid, String title, String imgUrl, String pubDate, String sourceLink, String channelId) {
@@ -75,11 +75,11 @@ public class Article {
         this.channelId = channelId;
     }
 
-    @Column(name = "pubDate")
+    @Column(value = "pubDate")
     String pubDate;
-    @Column(name = "sourceLink")
+    @Column(value = "sourceLink")
     String sourceLink;
-    @Column(name = "channelId")
+    @Column(value = "channelId")
     String channelId;
 
     @Override

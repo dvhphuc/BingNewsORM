@@ -1,6 +1,7 @@
 package org.example.query;
 
 public class QueryGenerator {
+
     public static String insertQuery(Object object) throws IllegalAccessException {
         return new InsertQueryBuilder().build(object);
     }
@@ -20,4 +21,9 @@ public class QueryGenerator {
     public static <T, ID> String selectByIdQuery(Class<T> entityClass, ID id) {
         return new SelectByIdQueryBuilder().build(entityClass, id);
     }
+
+    public static <T> String selectAllOnFieldsQuery(Class<T> entityClass, String[] fields) {
+        return new SelecAllOnFieldsBuilder().build(entityClass, fields);
+    }
+
 }

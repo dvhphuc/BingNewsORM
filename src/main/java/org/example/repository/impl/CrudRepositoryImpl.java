@@ -1,5 +1,6 @@
 package org.example.repository.impl;
 
+import org.example.annotation.Column;
 import org.example.model.*;
 import org.example.DbConnection;
 import org.example.repository.Pagination;
@@ -7,6 +8,7 @@ import org.example.repository.QueryPredicateExecutor;
 import org.example.query.QueryGenerator;
 import org.example.repository.CrudRepository;
 
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
 import java.sql.SQLException;
@@ -15,60 +17,56 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
-public class CrudRepositoryImpl<T, ID> implements CrudRepository<T, ID>, Pagination<T, ID>, QueryPredicateExecutor<T> {
+public class CrudRepositoryImpl<T, ID> implements CrudRepository<T, ID> {
     private final Class<T> entityClass;
-    private final DbConnection dbConnection;
 
-    public CrudRepositoryImpl(Class<T> entityClass, DbConnection dbConnection) {
+    public CrudRepositoryImpl(Class<T> entityClass) {
         this.entityClass = entityClass;
-        this.dbConnection = dbConnection;
     }
 
-    public CrudRepositoryImpl(ParameterizedType type, DbConnection dbConnection) {
+    public CrudRepositoryImpl(ParameterizedType type) {
         entityClass = (Class<T>) type.getActualTypeArguments()[0];
-        this.dbConnection = dbConnection;
     }
 
     @Override
     public void save(T entity) throws Exception {
         String insertQuery = QueryGenerator.insertQuery(entity);
-        var statement = DbConnection.getStatement();
-        statement.execute(insertQuery);
+        DbConnection.getStatement().execute(insertQuery);
     }
 
     @Override
     public void update(T entity) throws Exception {
         String updateQuery = QueryGenerator.updateQuery(entity);
-        var statement = DbConnection.getStatement();
-        statement.execute(updateQuery);
+        DbConnection.getStatement().execute(updateQuery);
     }
 
     @Override
     public void delete(ID id) throws Exception {
         String deleteQuery = QueryGenerator.deleteQuery(id);
-        var statement = DbConnection.getStatement();
-        statement.execute(deleteQuery);
+        DbConnection.getStatement().execute(deleteQuery);;
     }
 
     @Override
     public T findById(ID id) throws Exception {
-        var statement = DbConnection.getConnection().createStatement();
         String selectQuery = QueryGenerator.selectByIdQuery(entityClass, id);
-        return getResultSet(statement, selectQuery).get(0);
+        return getResultSet(selectQuery).get(0);
     }
 
     @Override
     public List<T> findAll() throws Exception {
-        var statement = DbConnection.getConnection().createStatement();
         String selectQuery = QueryGenerator.selectAllQuery(entityClass);
-        return getResultSet(statement, selectQuery);
+        return getResultSet(selectQuery);
+    }
+
+    @Override
+    public List<T> find(String query) throws Exception {
+        return getResultSet(query);
     }
 
     @Override
     public List<T> find(Predicate<T> predicate) throws Exception {
-        var statement = DbConnection.getConnection().createStatement();
         var selectAllQuery = QueryGenerator.selectAllQuery(entityClass);
-        List<T> list = getResultSet(statement, selectAllQuery);
+        List<T> list = getResultSet(selectAllQuery);
         List<T> filteredList = new ArrayList<>();
         for (T entity : list) {
             if (predicate.test(entity)) {
@@ -78,8 +76,9 @@ public class CrudRepositoryImpl<T, ID> implements CrudRepository<T, ID>, Paginat
         return filteredList;
     }
 
-    private List<T> getResultSet(Statement statement, String selectAllQuery) throws SQLException, InstantiationException, IllegalAccessException, java.lang.reflect.InvocationTargetException, NoSuchMethodException {
-        var resultSet = statement.executeQuery(selectAllQuery);
+    private List<T> getResultSet(String sqlQuery) throws Exception {
+        var statement = DbConnection.getConnection().createStatement();
+        var resultSet = statement.executeQuery(sqlQuery);
 
         Field[] fields = entityClass.getDeclaredFields();
 
@@ -98,15 +97,14 @@ public class CrudRepositoryImpl<T, ID> implements CrudRepository<T, ID>, Paginat
 
     @Override
     public long count(Predicate<T> predicate) throws Exception {
-        var list = getResultSet(DbConnection.getStatement(), QueryGenerator.selectAllQuery(entityClass));
+        var list = getResultSet(QueryGenerator.selectAllQuery(entityClass));
         return list.stream().filter(predicate).count();
     }
 
     @Override
     public List<T> getInPage(int page, int size) throws Exception {
-        var statement = DbConnection.getConnection().createStatement();
         var selectAllQuery = QueryGenerator.selectAllQuery(entityClass);
-        List<T> list = getResultSet(statement, selectAllQuery);
+        List<T> list = getResultSet(selectAllQuery);
         List<T> filteredList = new ArrayList<>();
         for (int i = (page - 1) * size; i < page * size; i++) {
             filteredList.add(list.get(i));

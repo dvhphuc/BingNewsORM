@@ -20,8 +20,7 @@ class RepositoryFactoryTest {
 
     @Test
     void getRepository() throws Exception {
-        var dbConnection = new DbConnection(extractDbConnection());
-        CrudRepositoryImpl<Article, String> articleRepoImpl = new CrudRepositoryImpl<>(Article.class, dbConnection);
+        CrudRepositoryImpl<Article, String> articleRepoImpl = new CrudRepositoryImpl<>(Article.class);
         assert articleRepoImpl.findAll().size() > 0;
     }
 

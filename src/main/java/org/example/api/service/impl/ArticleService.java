@@ -1,4 +1,4 @@
-package org.example.API.service.impl;
+package org.example.api.service.impl;
 
 import org.example.annotation.Autowired;
 import org.example.model.Article;

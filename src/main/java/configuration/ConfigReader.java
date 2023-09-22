@@ -1,6 +1,7 @@
 package configuration;
 
 import java.io.FileInputStream;
+import java.sql.Connection;
 import java.util.Properties;
 
 public class ConfigReader {
@@ -8,7 +9,7 @@ public class ConfigReader {
     public ConfigReader(FileInputStream fileInputStream) {
         this.fileInputStream = fileInputStream;
     }
-    public static String getConnectionString() throws Exception {
+    public String getConnectionString() throws Exception {
         Properties properties = new Properties();
         properties.load(fileInputStream);
         return properties.getProperty("ConnectionString");

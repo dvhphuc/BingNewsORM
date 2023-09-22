@@ -10,15 +10,24 @@ import org.example.repository.factory.RepositoryFactory;
 import org.junit.jupiter.api.Test;
 import org.reflections.Reflections;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.Set;
 
 class RepositoryFactoryTest {
 
+    void makeConnection() throws Exception {
+        FileInputStream fis = new FileInputStream("src/main/java/configuration/config.properties");
+        ConfigReader configReader = new ConfigReader(fis);
+        new DbConnection(configReader.getConnectionString());
+
+    }
+
     @Test
     void createRepositoryImplementInRunTime() throws Exception {
-        var dbConnection = new DbConnection(ConfigReader.getConnectionString());
-        var repoFactory = new RepositoryFactory(dbConnection);
+        makeConnection();
+        var repoFactory = new RepositoryFactory();
 
         var repoInterfaces = List.of(ArticleRepository.class, AdTopicRepository.class);
         for (var repoInterface : repoInterfaces) {

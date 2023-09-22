@@ -29,5 +29,14 @@ class EntityRepositoryTest {
         assert adRepo.findAll().size() > 0;
     }
 
+    @Test
+    void testFindByQuery() throws Exception {
+        makeConnectionToDb();
+
+        var repo = (ArticleRepository) RepositoryFactory.createRepoImpl(ArticleRepository.class);
+        var articles = repo.find("SELECT * FROM article");
+        articles.forEach(System.out::println);
+    }
+
 
 }

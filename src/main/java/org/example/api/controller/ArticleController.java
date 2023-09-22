@@ -1,5 +1,5 @@
-package org.example.API.controller;
-import org.example.API.service.impl.ArticleService;
+package org.example.api.controller;
+import org.example.api.service.impl.ArticleService;
 import org.example.annotation.*;
 import org.example.model.Article;
 

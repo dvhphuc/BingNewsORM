@@ -1,13 +1,9 @@
-package org.example.API.controller;
+package org.example.api.controller;
 
-import configuration.ConfigReader;
-import org.example.API.service.impl.ArticleService;
-import org.example.DbConnection;
+import org.example.api.service.impl.ArticleService;
 import org.example.repository.ArticleRepository;
 import org.example.repository.factory.RepositoryFactory;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class ArticleControllerTest {
 
