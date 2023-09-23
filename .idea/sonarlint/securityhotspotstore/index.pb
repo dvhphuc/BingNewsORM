@@ -93,10 +93,6 @@ o
 ?src/main/java/org/example/api/controller/ArticleController.java,3\0\305e8c602e438c2c813da38ece89cfa274918d7f
 n
 >src/main/java/org/example/api/service/impl/ArticleService.java,a\7\a7506b6d849c0dd599aa76f5d1f111c6262b7559
-|
-Lsrc/main/java/org/example/dependencyinjection/DefaultDependencyProvider.java,e\6\e690ae59d191eb4bdd764ae25d142fd18ebdcd8d
-u
-Esrc/main/java/org/example/dependencyinjection/DependencyProvider.java,b\4\b4544f010a9458093d7d71fc0a816e5743b3c42b
 g
 7src/main/java/org/example/query/DeleteQueryBuilder.java,a\4\a4c442e292f337c7d2e7d401df6d23e1bfbfb461
 g
@@ -111,3 +107,5 @@ _
 /src/test/java/org/example/DbConnectionTest.java,8\f\8f1f6a4b7aa3e82da77adf90cf6d0f038c8f4e64
 p
 @src/main/java/org/example/dependencyinjection/DependencyMap.java,5\a\5a7d38e61821a65ccccabadf2551790cd46f3776
+u
+Esrc/main/java/org/example/dependencyinjection/DefaultBeanFactory.java,1\7\1744e23615ad1558f8b5a6e89174fd54120bda75

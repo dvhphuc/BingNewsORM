@@ -20,7 +20,7 @@ class DependencyMapTest {
         dependencyMap.add(ClassB.class, new LinkedList<>(List.of(ClassC.class)));
         dependencyMap.add(ClassC.class, new LinkedList<>());
 
-        assert dependencyMap.getDependencies(ClassA.class).size() == 1;
+        assert dependencyMap.parentsBean.get(ClassC.class).get(0) == ClassB.class;
     }
 
     @Test

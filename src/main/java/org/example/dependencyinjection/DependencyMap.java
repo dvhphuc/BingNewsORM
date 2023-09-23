@@ -7,7 +7,12 @@ import java.util.logging.Logger;
 
 public class DependencyMap {
     private final Map<Class<?>, List<Class<?>>> dependentMap = new HashMap<>();
-    private final Map<Class<?>, List<Class<?>>> parenBean = new HashMap<>();
+    public final Map<Class<?>, List<Class<?>>> parentsBean = new HashMap<>();
+
+    public Set<Class<?>> getClassesNeedCreateInstance() {
+        return classesNeedCreateInstance;
+    }
+
     private final Set<Class<?>> classesNeedCreateInstance = new HashSet<>();
     private final BeanFactory beanFactory;
 
@@ -20,46 +25,40 @@ public class DependencyMap {
     public void add(Class<?> clazz, List<Class<?>> dependencies) {
         dependentMap.put(clazz, dependencies);
         classesNeedCreateInstance.add(clazz);
-        for (Class<?> dependency : dependencies) {
-            parenBean.computeIfAbsent(dependency, k -> new LinkedList<>()).add(clazz);
-            classesNeedCreateInstance.add(dependency);
-        }
+        dependencies.forEach(dependency -> {
+            parentsBean.computeIfAbsent(dependency, k -> new LinkedList<>());
+            parentsBean.get(dependency).add(clazz);
+            classesNeedCreateInstance.add(clazz);
+        });
     }
 
-    public void createDependencyInstance() {
+    public void createDependencyInstance() throws Exception {
         while (!classesNeedCreateInstance.isEmpty()) {
             Class<?> creatableClass = getCreatableClass(classesNeedCreateInstance);
-            if (creatableClass == null) {
-                return;
-            }
+
+            var beanInstance = beanFactory.getInstance(creatableClass);
+            RootApp.addInstance(beanInstance);
+
             logger.info("Created instance of " + creatableClass.getName());
             classesNeedCreateInstance.remove(creatableClass);
-            updateBeanDependencies(creatableClass); //Remove dependence of creatableClass from other classes
+
+            updateDependentMap(creatableClass);
         }
     }
 
     public Class<?> getCreatableClass(Set<Class<?>> pool) {
-        for (Class<?> node : pool) {
-            if (dependentMap.get(node).isEmpty()) {
-                return node;
-            }
-        }
-        return null;
+        return pool.stream()
+                .filter(clazz -> dependentMap.get(clazz).isEmpty())
+                .findFirst()
+                .orElse(null);
     }
 
-    public void updateBeanDependencies(Class<?> node) {
-        if (parenBean.get(node) == null)
-            return;
-        for (var parent : parenBean.get(node)) {
-            dependentMap.get(parent).remove(node);
-        }
+    public void updateDependentMap(Class<?> node) {
+        parentsBean.getOrDefault(node, new LinkedList<>())
+                .forEach(parent -> dependentMap.get(parent).remove(node));
     }
-
     public List<Class<?>> getDependencies(Class<?> clazz) {
         return dependentMap.get(clazz);
     }
 
-    public Set<Class<?>> getClassesNeedCreateInstance() {
-        return classesNeedCreateInstance;
-    }
 }

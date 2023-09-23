@@ -20,34 +20,24 @@ public class RootApp {
     public RootApp() {
         //This is Root Application
     }
-
-    public static void addInstace(Object instance) {
+    public static void addInstance(Object instance) {
         instances.add(instance);
     }
 
-
-
-    public void buidDependenciesMap(Class<?> clazz) {
-        System.out.println(clazz.getSimpleName());
-        if (dependencyMap.getDependencies(clazz) == null) {
-            dependencyMap.add(clazz, new LinkedList<>());
-        }
+    public void buildDependencyMap(Class<?> clazz) {
         var fields = clazz.getDeclaredFields();
+        var dependencies = new LinkedList<Class<?>>();
         for (var field : fields) {
-            if (!field.isAnnotationPresent(Autowired.class)) {
-                continue;
+            if (field.isAnnotationPresent(Autowired.class)) {
+                dependencies.add(field.getType());
             }
-
-            if (!dependencyMap.getDependencies(clazz).contains(field.getType()))
-                dependencyMap.getDependencies(clazz).add(field.getType());
-
-            var subClass = field.getType(); // subClass is Autowired class
-            buidDependenciesMap(subClass);
         }
+        dependencyMap.add(clazz, dependencies);
     }
 
     public void register(Class<?> clazz) throws Exception {
-        buidDependenciesMap(clazz);
+        buildDependencyMap(clazz);
         dependencyMap.createDependencyInstance();
     }
+
 }
