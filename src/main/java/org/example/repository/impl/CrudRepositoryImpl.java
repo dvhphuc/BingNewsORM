@@ -1,17 +1,13 @@
 package org.example.repository.impl;
 
-import org.example.annotation.Column;
 import org.example.model.*;
 import org.example.DbConnection;
-import org.example.repository.Pagination;
-import org.example.repository.QueryPredicateExecutor;
 import org.example.query.QueryGenerator;
 import org.example.repository.CrudRepository;
+import org.junit.Ignore;
 
-import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -46,7 +42,7 @@ public class CrudRepositoryImpl<T, ID> implements CrudRepository<T, ID> {
     @Override
     public void delete(ID id) throws Exception {
         String deleteQuery = QueryGenerator.deleteQuery(id);
-        DbConnection.getStatement().execute(deleteQuery);;
+        DbConnection.getStatement().execute(deleteQuery);
     }
 
     @Override
@@ -58,6 +54,12 @@ public class CrudRepositoryImpl<T, ID> implements CrudRepository<T, ID> {
     @Override
     public List<T> findAll() throws Exception {
         String selectQuery = QueryGenerator.selectAllQuery(entityClass);
+        return getResultSet(selectQuery);
+    }
+
+    @Override
+    public List<T> findAll(String[] fields) throws Exception {
+        String selectQuery = QueryGenerator.selectFieldsQuery(entityClass, fields);
         return getResultSet(selectQuery);
     }
 
@@ -77,6 +79,9 @@ public class CrudRepositoryImpl<T, ID> implements CrudRepository<T, ID> {
             }
         }
         return filteredList;
+        //Convert predicate to SQL Query
+
+        //return getResultSet(query);
     }
 
     private List<T> getResultSet(String sqlQuery) throws Exception {
@@ -89,8 +94,10 @@ public class CrudRepositoryImpl<T, ID> implements CrudRepository<T, ID> {
         while (resultSet.next()) {
             T entity = entityClass.getDeclaredConstructor().newInstance();
             for (Field field : fields) {
-                field.setAccessible(true);
-                field.set(entity, resultSet.getObject(field.getName()));
+                if (sqlQuery.toUpperCase().contains(field.getName().toUpperCase()) || sqlQuery.contains("*")) {
+                    field.setAccessible(true);
+                    field.set(entity, resultSet.getObject(field.getName()));
+                }
             }
             list.add(entity);
         }
@@ -107,11 +114,12 @@ public class CrudRepositoryImpl<T, ID> implements CrudRepository<T, ID> {
     public List<T> getInPage(int page, int size) throws Exception {
         var selectAllQuery = QueryGenerator.selectAllQuery(entityClass);
         List<T> list = getResultSet(selectAllQuery);
-        List<T> filteredList = new ArrayList<>();
-        for (int i = (page - 1) * size; i < page * size; i++) {
-            filteredList.add(list.get(i));
-        }
-        return filteredList;
+
+        int startIndex = (page - 1) * size;
+        int endIndex = Math.min(startIndex + size, list.size());
+
+        return list.subList(startIndex, endIndex);
     }
+
 
 }

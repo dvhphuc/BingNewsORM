@@ -13,10 +13,6 @@ public class DependencyMap {
     private final Map<Class<?>, List<Class<?>>> dependentTree = new HashMap<>();
     public final Map<Class<?>, List<Class<?>>> parentsBean = new HashMap<>();
 
-    public Set<Class<?>> getClassesNeedCreateInstance() {
-        return classesNeedCreateInstance;
-    }
-
     private final Set<Class<?>> classesNeedCreateInstance = new HashSet<>();
     private final BeanFactory beanFactory;
 
@@ -36,19 +32,20 @@ public class DependencyMap {
         });
     }
 
-    public void createDependencyInstance() throws Exception {
+    public void arrangeBeans() throws Exception {
         while (!classesNeedCreateInstance.isEmpty()) {
             Class<?> creatableClass = getCreatableClass(classesNeedCreateInstance);
+             //For subClass of CreatableClass
 
-            var beanInstance = beanFactory.getInstance(creatableClass);
-            RootApp.addInstance(beanInstance);
+            //var beanInstance = beanFactory.getInstance(creatableClass);
+            RootApp.addInstance(creatableClass);
 
             logger.info("Created instance of " + creatableClass.getName());
             classesNeedCreateInstance.remove(creatableClass);
-            //System.out.println("classesNeedCreateInstance = " + classesNeedCreateInstance);
             updateDependentMap(creatableClass);
         }
     }
+
 
     public Class<?> getCreatableClass(Set<Class<?>> pool) {
         return pool.stream()
@@ -61,8 +58,4 @@ public class DependencyMap {
         parentsBean.getOrDefault(node, new LinkedList<>())
                 .forEach(parent -> dependentTree.get(parent).remove(node));
     }
-    public List<Class<?>> getDependencies(Class<?> clazz) {
-        return dependentTree.get(clazz);
-    }
-
 }

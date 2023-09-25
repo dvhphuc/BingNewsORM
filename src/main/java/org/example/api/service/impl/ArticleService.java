@@ -3,14 +3,14 @@ package org.example.api.service.impl;
 import org.example.annotation.Autowired;
 import org.example.model.Article;
 import org.example.repository.ArticleRepository;
+import org.example.repository.factory.RepositoryFactory;
 import org.json.JSONArray;
 
 public class ArticleService {
-    @Autowired
     private ArticleRepository articleRepository;
 
-    public ArticleService(ArticleRepository articleRepository) {
-        this.articleRepository = articleRepository;
+    public ArticleService() throws Exception {
+        articleRepository = (ArticleRepository) RepositoryFactory.createRepoImpl(ArticleRepository.class);
     }
 
     public String getArticles() throws Exception {

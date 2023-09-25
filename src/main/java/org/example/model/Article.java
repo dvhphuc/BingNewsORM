@@ -11,7 +11,7 @@ public class Article {
     String guid;
     @Column(value = "title")
     String title;
-    @Column(value = "imgUrl")
+    @Column(value = "imgurl")
     String imgUrl;
 
     public Article(String guid, String title, String imgUrl, String pubDate, String sourceLink, String channelId) {
@@ -82,15 +82,4 @@ public class Article {
     @Column(value = "channelId")
     String channelId;
 
-    @Override
-    public String toString() {
-        return "Article{" +
-                "guid='" + guid + '\'' +
-                ", title='" + title + '\'' +
-                ", imgUrl='" + imgUrl + '\'' +
-                ", pubDate='" + pubDate + '\'' +
-                ", sourceLink='" + sourceLink + '\'' +
-                ", channelId='" + channelId + '\'' +
-                '}';
-    }
 }

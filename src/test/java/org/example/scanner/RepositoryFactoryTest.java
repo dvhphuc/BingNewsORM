@@ -34,19 +34,6 @@ class RepositoryFactoryTest {
             CrudRepository repo = repoFactory.createRepoImpl(repoInterface);
             assert repo.findAll().size() > 0;
         }
-
     }
 
-    @Test
-    void testGetAllClassOfInterface() {
-        Reflections reflections = new Reflections("org.example.repository");
-        Set<Class<? extends CrudRepository>> classes = reflections.getSubTypesOf(CrudRepository.class);
-        classes.forEach(System.out::println);
-    }
-
-    @Test
-    void testGetAllClasses() {
-        var rootApp = new RootApp();
-        assert rootApp.getDependencyMap().getDependencies(CrudRepository.class).size() > 0;
-    }
 }

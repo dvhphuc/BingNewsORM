@@ -8,11 +8,6 @@ public class DefaultBeanFactory implements BeanFactory {
 
     @Override
     public <T> T getInstance(Class<T> clazz) throws Exception {
-        if (instances.containsKey(clazz)) {
-            return (T) instances.get(clazz);
-        }
-        T instance = clazz.getDeclaredConstructor().newInstance();
-        instances.put(clazz, instance);
-        return instance;
+        return (T) instances.get(clazz);
     }
 }

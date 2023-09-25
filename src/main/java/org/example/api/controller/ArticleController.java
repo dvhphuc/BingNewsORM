@@ -5,9 +5,12 @@ import org.example.model.Article;
 
 import javax.servlet.http.HttpServletRequest;
 
-@Controller("Article")
+@Controller
+@RequestMapping("/api")
 public class ArticleController {
-    ArticleService articleService;
+
+    @Autowired
+    private ArticleService articleService;
     public ArticleController(ArticleService articleService) throws Exception {
         this.articleService = articleService;
     }

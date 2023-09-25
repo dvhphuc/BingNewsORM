@@ -16,7 +16,13 @@ public class SelectByIdQueryBuilder {
             if (field.isAnnotationPresent(Primary.class)) {
                 query.append(field.getName());
                 query.append(" = ");
+                if (field.getType().equals(String.class)) {
+                    query.append("'");
+                }
                 query.append(id);
+                if (field.getType().equals(String.class)) {
+                    query.append("'");
+                }
                 query.append(";");
                 return query.toString();
             }

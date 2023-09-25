@@ -22,8 +22,10 @@ public class QueryGenerator {
         return new SelectByIdQueryBuilder().build(entityClass, id);
     }
 
-    public static <T> String selectAllOnFieldsQuery(Class<T> entityClass, String[] fields) {
-        return new SelecAllOnFieldsBuilder().build(entityClass, fields);
+    public static String selectFieldsQuery(Class<?> clazz, String[] fields) {
+        return new SelectFieldsQueryBuilder().build(clazz, fields);
     }
+
+
 
 }

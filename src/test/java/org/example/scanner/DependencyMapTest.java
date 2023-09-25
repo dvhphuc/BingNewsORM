@@ -33,7 +33,7 @@ class DependencyMapTest {
         dependencyMap.add(ClassC.class, new LinkedList<>(List.of(ClassC1.class)));
         dependencyMap.add(ClassC1.class, new LinkedList<>());
 
-        dependencyMap.createDependencyInstance();
+        dependencyMap.arrangeBeans();
 
     }
 

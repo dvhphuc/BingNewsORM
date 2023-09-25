@@ -17,6 +17,10 @@ public class RootApp {
 
     private final DependencyMap dependencyMap = new DependencyMap(new DefaultBeanFactory());
 
+    public static List<Object> getInstances() {
+        return instances;
+    }
+
     private static List<Object> instances = new ArrayList<>();
 
     public RootApp() {
@@ -31,11 +35,26 @@ public class RootApp {
 
         dependencyMap.add(clazz, autowiredClasses);
         // Recursive to register all dependencies
-        autowiredClasses.forEach(dependency -> register(dependency));
+        autowiredClasses.forEach(subclazz -> register(subclazz));
     }
 
     public static void addInstance(Object instance) {
         instances.add(instance);
+    }
+
+    public void createBeanInOrder() {
+        instances.forEach(instance -> {
+            Arrays.stream(instance.getClass().getDeclaredFields())
+                    .filter(field -> field.isAnnotationPresent(Autowired.class))
+                    .forEach(field -> {
+                        try {
+                            field.setAccessible(true);
+                            field.set(instance, dependencyMap.getDependentTree().get(field.getType()).get(0).newInstance());
+                        } catch (InstantiationException | IllegalAccessException e) {
+                            e.printStackTrace();
+                        }
+                    });
+        });
     }
 
 }

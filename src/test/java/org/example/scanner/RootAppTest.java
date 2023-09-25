@@ -1,21 +1,35 @@
 package org.example.scanner;
 
+import configuration.ConfigReader;
+import org.example.DbConnection;
+import org.example.api.controller.ArticleController;
+
 import org.junit.jupiter.api.Test;
+
+import java.io.FileInputStream;
 
 class RootAppTest {
 
     @Test
-    void testRegister() {
+    void testCreateBeansInOrder() throws Exception {
         var rootApp = new RootApp();
         rootApp.register(ClassA.class);
-        assert rootApp.getDependencyMap().getDependentTree().size() == 4; // 4 means ClassA, ClassB, ClassC, ClassC1
+        rootApp.getDependencyMap().arrangeBeans();
+        assert RootApp.getInstances().size() == 4; // ClassA, ClassB, ClassC, ClassC1
     }
 
     @Test
-    void testCreateBeanInstancesAfterRegister() throws Exception {
+    void testAutowiredInController() throws Exception {
+        var fileInputStream = new FileInputStream("src/main/java/configuration/config.properties");
+        var configReader = new ConfigReader(fileInputStream);
+        var connectionString = configReader.getConnectionString();
+        var dbConnection = new DbConnection(connectionString);
+
         var rootApp = new RootApp();
-        rootApp.register(ClassA.class);
-        rootApp.getDependencyMap().createDependencyInstance();
+        rootApp.register(ArticleController.class);
+        rootApp.getDependencyMap().arrangeBeans();
+        rootApp.createBeanInOrder();
+        System.out.println(rootApp.getDependencyMap().getDependentTree().size());
     }
 
 }
