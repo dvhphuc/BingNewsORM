@@ -1,24 +1,24 @@
 
-g	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(“Ñ¡øÿÿÿÿ8®–šâ«1
-b	java:S112R"FDefine and throw a dedicated exception instead of using a generic one.(ì„€8ÊÒšâ«1
-e	java:S119"IRename this generic name to match the regular expression '^[A-Z][0-9]?$'.(€¶€8Éğ™â«1
+g	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(“Ñ¡øÿÿÿÿ8€Èı–¬1
+b	java:S112R"FDefine and throw a dedicated exception instead of using a generic one.(ì„€8€Èı–¬1
+e	java:S119"IRename this generic name to match the regular expression '^[A-Z][0-9]?$'.(€¶€8¶Èı–¬1
 
-java:S1130"qRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from constructor's body.(óÁæß8×Òšâ«1
+java:S1130"qRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from constructor's body.(óÁæß8¹Èı–¬1
 “
-java:S1130"qRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from constructor's body.(“Ñ¡øÿÿÿÿ8ØÒšâ«1
+java:S1130"qRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from constructor's body.(“Ñ¡øÿÿÿÿ8ºÈı–¬1
 >
-java:S11161"Remove this empty statement.(¦¿¹Éüÿÿÿÿ8Ìğ™â«1
+java:S11161"Remove this empty statement.(¦¿¹Éüÿÿÿÿ8ÀÈı–¬1
 I
-java:S3011\",This accessibility update should be removed.(˜ÂÓ˜8Ïğ™â«1
+java:S3011\",This accessibility update should be removed.(˜ÂÓ˜8ÌÈı–¬1
 I
-java:S3011]",This accessibility bypass should be removed.(óƒ¤È8Ïğ™â«1
+java:S3011]",This accessibility bypass should be removed.(óƒ¤È8ÍÈı–¬1
 W
-java:S1128":Remove this unused import 'org.example.annotation.Column'.(¸Áø‚8Òğ™â«1
+java:S1128":Remove this unused import 'org.example.annotation.Column'.(¸Áø‚8ÓÈı–¬1
 P
-java:S1128".Remove this unused import 'org.example.model'.(°Ñ ñûÿÿÿÿ8Òğ™â«1
+java:S1128".Remove this unused import 'org.example.model'.(°Ñ ñûÿÿÿÿ8ÔÈı–¬1
 [
-java:S1128">Remove this unused import 'org.example.repository.Pagination'.(´Ñ®8Òğ™â«1
+java:S1128">Remove this unused import 'org.example.repository.Pagination'.(´Ñ®8ÔÈı–¬1
 l
-java:S1128"JRemove this unused import 'org.example.repository.QueryPredicateExecutor'.(‚ìâÔúÿÿÿÿ8Òğ™â«1
+java:S1128"JRemove this unused import 'org.example.repository.QueryPredicateExecutor'.(‚ìâÔúÿÿÿÿ8ÔÈı–¬1
 O
-java:S1128"2Remove this unused import 'java.sql.SQLException'.(ÛïÆŸ8Òğ™â«1
+java:S1128"2Remove this unused import 'java.sql.SQLException'.(ÛïÆŸ8ÔÈı–¬1

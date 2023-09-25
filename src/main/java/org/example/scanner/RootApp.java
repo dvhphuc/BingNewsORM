@@ -4,7 +4,9 @@ import org.example.annotation.Autowired;
 import org.example.dependencyinjection.DefaultBeanFactory;
 import org.example.dependencyinjection.DependencyMap;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -20,24 +22,20 @@ public class RootApp {
     public RootApp() {
         //This is Root Application
     }
+
+    public void register(Class<?> clazz) {
+        var autowiredClasses = new LinkedList<Class<?>>();
+        Arrays.stream(clazz.getDeclaredFields())
+                .filter(field -> field.isAnnotationPresent(Autowired.class))
+                .forEach(field -> autowiredClasses.add(field.getType()));
+
+        dependencyMap.add(clazz, autowiredClasses);
+        // Recursive to register all dependencies
+        autowiredClasses.forEach(dependency -> register(dependency));
+    }
+
     public static void addInstance(Object instance) {
         instances.add(instance);
-    }
-
-    public void buildDependencyMap(Class<?> clazz) {
-        var fields = clazz.getDeclaredFields();
-        var dependencies = new LinkedList<Class<?>>();
-        for (var field : fields) {
-            if (field.isAnnotationPresent(Autowired.class)) {
-                dependencies.add(field.getType());
-            }
-        }
-        dependencyMap.add(clazz, dependencies);
-    }
-
-    public void register(Class<?> clazz) throws Exception {
-        buildDependencyMap(clazz);
-        dependencyMap.createDependencyInstance();
     }
 
 }

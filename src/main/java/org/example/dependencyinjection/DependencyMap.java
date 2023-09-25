@@ -6,7 +6,11 @@ import java.util.*;
 import java.util.logging.Logger;
 
 public class DependencyMap {
-    private final Map<Class<?>, List<Class<?>>> dependentMap = new HashMap<>();
+    public Map<Class<?>, List<Class<?>>> getDependentTree() {
+        return dependentTree;
+    }
+
+    private final Map<Class<?>, List<Class<?>>> dependentTree = new HashMap<>();
     public final Map<Class<?>, List<Class<?>>> parentsBean = new HashMap<>();
 
     public Set<Class<?>> getClassesNeedCreateInstance() {
@@ -23,7 +27,7 @@ public class DependencyMap {
     }
 
     public void add(Class<?> clazz, List<Class<?>> dependencies) {
-        dependentMap.put(clazz, dependencies);
+        dependentTree.put(clazz, dependencies);
         classesNeedCreateInstance.add(clazz);
         dependencies.forEach(dependency -> {
             parentsBean.computeIfAbsent(dependency, k -> new LinkedList<>());
@@ -41,24 +45,24 @@ public class DependencyMap {
 
             logger.info("Created instance of " + creatableClass.getName());
             classesNeedCreateInstance.remove(creatableClass);
-
+            //System.out.println("classesNeedCreateInstance = " + classesNeedCreateInstance);
             updateDependentMap(creatableClass);
         }
     }
 
     public Class<?> getCreatableClass(Set<Class<?>> pool) {
         return pool.stream()
-                .filter(clazz -> dependentMap.get(clazz).isEmpty())
+                .filter(clazz -> dependentTree.get(clazz).isEmpty())
                 .findFirst()
                 .orElse(null);
     }
 
     public void updateDependentMap(Class<?> node) {
         parentsBean.getOrDefault(node, new LinkedList<>())
-                .forEach(parent -> dependentMap.get(parent).remove(node));
+                .forEach(parent -> dependentTree.get(parent).remove(node));
     }
     public List<Class<?>> getDependencies(Class<?> clazz) {
-        return dependentMap.get(clazz);
+        return dependentTree.get(clazz);
     }
 
 }
